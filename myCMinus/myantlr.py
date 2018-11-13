@@ -4,6 +4,7 @@ from antlr4 import *
 from MyCMinusLexer import MyCMinusLexer
 from MyCMinusParser import MyCMinusParser
 from MyCMinusListener import MyCMinusListener
+from Listener import Listener
 
 def main(argv):
     input = InputStream(argv)
@@ -14,7 +15,7 @@ def main(argv):
 
     output = open("output.txt","w")
     
-    listener = MyCMinusListener(output)
+    listener = Listener(output)
     walker = ParseTreeWalker()
     walker.walk(listener, tree)
         
@@ -22,5 +23,3 @@ def main(argv):
 
 #if __name__ == '__main__':
 #    main(sys.argv)
-
-main("int x = 9;")

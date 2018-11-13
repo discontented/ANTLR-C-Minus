@@ -21,6 +21,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Listener.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="myantlr.py">
       <SubType>Code</SubType>
     </Compile>
