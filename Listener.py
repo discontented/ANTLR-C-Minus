@@ -5,6 +5,6 @@ from gen.MyCMinusListener import MyCMinusListener
 
 
 class Listener(MyCMinusListener):
-    def __init__(self, output):
-        self.output = output
 
+    def enterStatement(self, ctx: MyCMinusParser.StatementContext):
+        print(ctx.getText())

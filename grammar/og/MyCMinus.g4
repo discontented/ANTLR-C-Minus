@@ -4,68 +4,80 @@ grammar MyCMinus;
  Parser Rules
  */
 
-program: block # blockLab;
+program: block ;
 
-block: LCURL statementList RCURL # statListBlock;
+block: LCURL statementList RCURL
+    ;
 
 statementList:
-	statementList SEMI statement	# statList
-	| statement						# singleStat;
+	statementList SEMI statement
+	| statement
+	;
 
 // varDecl: vartype ID (EQUALS expression)? SEMI # varDeclaration;
 
 varType: INT | FLOAT | VOID | BOOL | STRING | CHAR # IDtype;
 
 statement:
-	assignStatement		# assignStat
-	| PRINT expression	# printStat
-	| expression		# expStat
-	| conditionalStat	# condStat
-	|					# emptyStat;
+	assignStatement
+	| PRINT expression
+	| expression
+	| conditionalStat
+	|
+	;
 
-assignStatement: varType ID EQUALS expression # assignment;
+assignStatement: varType ID EQUALS expression;
 
 conditionalStat:
-	ifStatement			# ifCond
-	| whileStatement	# whileCond;
+	ifStatement
+	| whileStatement
+	;
 
 ifStatement:
-	IF LPAR expression RPAR block				# ifStat
-	| IF LPAR expression RPAR block ELSE block	# ifelseStat;
+	IF LPAR expression RPAR block
+	| IF LPAR expression RPAR block ELSE block
+	;
 
-whileStatement: WHILE LPAR expression RPAR block # whileStat;
+whileStatement: WHILE LPAR expression RPAR block ;
 
-expression: logical_or_expr # logicalOrExp;
+expression: logical_or_expr ;
 
 logical_or_expr:
-	logical_and_expr						# logicalAnd
-	| logical_or_expr OR logical_and_expr	# logicalOrAnd;
+	logical_and_expr
+	| logical_or_expr OR logical_and_expr
+	;
 
 logical_and_expr:
-	equalityExp							# equalityExpLab
-	| logical_and_expr AND equalityExp	# logicalAndEQ;
+	equalityExp
+	| logical_and_expr AND equalityExp
+	;
 
 equalityExp:
-	relationExp									# relationEqExp
-	| equalityExp (EQUALTO | NOTEQ) relationExp	# eqRelationExp;
+	relationExp
+	| equalityExp (EQUALTO | NOTEQ) relationExp
+	;
 
 relationExp:
-	arithmeticExp													# arithmeticExpLab
-	| relationExp (LTHAN | GTHAN | LEQUAL | GEQUAL) arithmeticExp	# relAritExp;
+	arithmeticExp
+	| relationExp (LTHAN | GTHAN | LEQUAL | GEQUAL) arithmeticExp
+	;
 
 arithmeticExp:
-	arithmeticExp (PLUS | MINUS) multiplicativeExp	# aritMultExp
-	| multiplicativeExp								# multExp;
+	arithmeticExp (PLUS | MINUS) multiplicativeExp
+	| multiplicativeExp
+	;
 
 multiplicativeExp:
-	multiplicativeExp (TIMES | DIVIDE) factor	# multFactorExp
-	| factor									# factorLab;
+	multiplicativeExp (TIMES | DIVIDE) factor
+	| factor
+	;
 
 factor:
-	LPAR expression RPAR	# parExp
-	| NUMBER				# numberCall
-	| ID					# idCall
-	| ID LBRAC NUMBER RBRAC	# arrayCall;
+	LPAR expression RPAR
+	| NUMBER
+	| ID
+	| ID LBRAC NUMBER RBRAC
+	;
 
 /*
  lexer rules

@@ -12,15 +12,11 @@ def main(argv):
     parser = MyCMinusParser(stream)
     tree = parser.program()
 
-    output = open("output.txt","w")
-
     # print(Trees.toStringTree(tree, None, parser))
 
-    listener = Listener(output)
+    listener = Listener()
     walker = ParseTreeWalker()
     walker.walk(listener, tree)
-        
-    output.close()      
 
 #if __name__ == '__main__':
 #    main(sys.argv)
