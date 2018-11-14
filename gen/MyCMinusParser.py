@@ -175,39 +175,27 @@ class MyCMinusParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-
-        def getRuleIndex(self):
-            return MyCMinusParser.RULE_program
-
-     
-        def copyFrom(self, ctx:ParserRuleContext):
-            super().copyFrom(ctx)
-
-
-
-    class BlockLabContext(ProgramContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.ProgramContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
         def block(self):
             return self.getTypedRuleContext(MyCMinusParser.BlockContext,0)
 
 
+        def getRuleIndex(self):
+            return MyCMinusParser.RULE_program
+
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterBlockLab" ):
-                listener.enterBlockLab(self)
+            if hasattr( listener, "enterProgram" ):
+                listener.enterProgram(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitBlockLab" ):
-                listener.exitBlockLab(self)
+            if hasattr( listener, "exitProgram" ):
+                listener.exitProgram(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitBlockLab" ):
-                return visitor.visitBlockLab(self)
+            if hasattr( visitor, "visitProgram" ):
+                return visitor.visitProgram(self)
             else:
                 return visitor.visitChildren(self)
+
 
 
 
@@ -216,7 +204,6 @@ class MyCMinusParser ( Parser ):
         localctx = MyCMinusParser.ProgramContext(self, self._ctx, self.state)
         self.enterRule(localctx, 0, self.RULE_program)
         try:
-            localctx = MyCMinusParser.BlockLabContext(self, localctx)
             self.enterOuterAlt(localctx, 1)
             self.state = 34
             self.block()
@@ -234,43 +221,33 @@ class MyCMinusParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-
-        def getRuleIndex(self):
-            return MyCMinusParser.RULE_block
-
-     
-        def copyFrom(self, ctx:ParserRuleContext):
-            super().copyFrom(ctx)
-
-
-
-    class StatListBlockContext(BlockContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.BlockContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
         def LCURL(self):
             return self.getToken(MyCMinusParser.LCURL, 0)
+
         def statementList(self):
             return self.getTypedRuleContext(MyCMinusParser.StatementListContext,0)
+
 
         def RCURL(self):
             return self.getToken(MyCMinusParser.RCURL, 0)
 
+        def getRuleIndex(self):
+            return MyCMinusParser.RULE_block
+
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterStatListBlock" ):
-                listener.enterStatListBlock(self)
+            if hasattr( listener, "enterBlock" ):
+                listener.enterBlock(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitStatListBlock" ):
-                listener.exitStatListBlock(self)
+            if hasattr( listener, "exitBlock" ):
+                listener.exitBlock(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitStatListBlock" ):
-                return visitor.visitStatListBlock(self)
+            if hasattr( visitor, "visitBlock" ):
+                return visitor.visitBlock(self)
             else:
                 return visitor.visitChildren(self)
+
 
 
 
@@ -279,7 +256,6 @@ class MyCMinusParser ( Parser ):
         localctx = MyCMinusParser.BlockContext(self, self._ctx, self.state)
         self.enterRule(localctx, 2, self.RULE_block)
         try:
-            localctx = MyCMinusParser.StatListBlockContext(self, localctx)
             self.enterOuterAlt(localctx, 1)
             self.state = 36
             self.match(MyCMinusParser.LCURL)
@@ -301,66 +277,31 @@ class MyCMinusParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def statement(self):
+            return self.getTypedRuleContext(MyCMinusParser.StatementContext,0)
 
-        def getRuleIndex(self):
-            return MyCMinusParser.RULE_statementList
-
-     
-        def copyFrom(self, ctx:ParserRuleContext):
-            super().copyFrom(ctx)
-
-
-    class StatListContext(StatementListContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.StatementListContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
 
         def statementList(self):
             return self.getTypedRuleContext(MyCMinusParser.StatementListContext,0)
 
+
         def SEMI(self):
             return self.getToken(MyCMinusParser.SEMI, 0)
-        def statement(self):
-            return self.getTypedRuleContext(MyCMinusParser.StatementContext,0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterStatList" ):
-                listener.enterStatList(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitStatList" ):
-                listener.exitStatList(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitStatList" ):
-                return visitor.visitStatList(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class SingleStatContext(StatementListContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.StatementListContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def statement(self):
-            return self.getTypedRuleContext(MyCMinusParser.StatementContext,0)
-
+        def getRuleIndex(self):
+            return MyCMinusParser.RULE_statementList
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterSingleStat" ):
-                listener.enterSingleStat(self)
+            if hasattr( listener, "enterStatementList" ):
+                listener.enterStatementList(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitSingleStat" ):
-                listener.exitSingleStat(self)
+            if hasattr( listener, "exitStatementList" ):
+                listener.exitStatementList(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitSingleStat" ):
-                return visitor.visitSingleStat(self)
+            if hasattr( visitor, "visitStatementList" ):
+                return visitor.visitStatementList(self)
             else:
                 return visitor.visitChildren(self)
 
@@ -375,10 +316,6 @@ class MyCMinusParser ( Parser ):
         self.enterRecursionRule(localctx, 4, self.RULE_statementList, _p)
         try:
             self.enterOuterAlt(localctx, 1)
-            localctx = MyCMinusParser.SingleStatContext(self, localctx)
-            self._ctx = localctx
-            _prevctx = localctx
-
             self.state = 41
             self.statement()
             self._ctx.stop = self._input.LT(-1)
@@ -390,7 +327,7 @@ class MyCMinusParser ( Parser ):
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    localctx = MyCMinusParser.StatListContext(self, MyCMinusParser.StatementListContext(self, _parentctx, _parentState))
+                    localctx = MyCMinusParser.StatementListContext(self, _parentctx, _parentState)
                     self.pushNewRecursionContext(localctx, _startState, self.RULE_statementList)
                     self.state = 43
                     if not self.precpred(self._ctx, 2):
@@ -484,138 +421,38 @@ class MyCMinusParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-
-        def getRuleIndex(self):
-            return MyCMinusParser.RULE_statement
-
-     
-        def copyFrom(self, ctx:ParserRuleContext):
-            super().copyFrom(ctx)
+        def assignStatement(self):
+            return self.getTypedRuleContext(MyCMinusParser.AssignStatementContext,0)
 
 
+        def PRINT(self):
+            return self.getToken(MyCMinusParser.PRINT, 0)
 
-    class CondStatContext(StatementContext):
+        def expression(self):
+            return self.getTypedRuleContext(MyCMinusParser.ExpressionContext,0)
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.StatementContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
 
         def conditionalStat(self):
             return self.getTypedRuleContext(MyCMinusParser.ConditionalStatContext,0)
 
 
+        def getRuleIndex(self):
+            return MyCMinusParser.RULE_statement
+
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterCondStat" ):
-                listener.enterCondStat(self)
+            if hasattr( listener, "enterStatement" ):
+                listener.enterStatement(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitCondStat" ):
-                listener.exitCondStat(self)
+            if hasattr( listener, "exitStatement" ):
+                listener.exitStatement(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitCondStat" ):
-                return visitor.visitCondStat(self)
+            if hasattr( visitor, "visitStatement" ):
+                return visitor.visitStatement(self)
             else:
                 return visitor.visitChildren(self)
 
-
-    class PrintStatContext(StatementContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.StatementContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def PRINT(self):
-            return self.getToken(MyCMinusParser.PRINT, 0)
-        def expression(self):
-            return self.getTypedRuleContext(MyCMinusParser.ExpressionContext,0)
-
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterPrintStat" ):
-                listener.enterPrintStat(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitPrintStat" ):
-                listener.exitPrintStat(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitPrintStat" ):
-                return visitor.visitPrintStat(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class AssignStatContext(StatementContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.StatementContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def assignStatement(self):
-            return self.getTypedRuleContext(MyCMinusParser.AssignStatementContext,0)
-
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterAssignStat" ):
-                listener.enterAssignStat(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitAssignStat" ):
-                listener.exitAssignStat(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitAssignStat" ):
-                return visitor.visitAssignStat(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class ExpStatContext(StatementContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.StatementContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def expression(self):
-            return self.getTypedRuleContext(MyCMinusParser.ExpressionContext,0)
-
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterExpStat" ):
-                listener.enterExpStat(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitExpStat" ):
-                listener.exitExpStat(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitExpStat" ):
-                return visitor.visitExpStat(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class EmptyStatContext(StatementContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.StatementContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterEmptyStat" ):
-                listener.enterEmptyStat(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitEmptyStat" ):
-                listener.exitEmptyStat(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitEmptyStat" ):
-                return visitor.visitEmptyStat(self)
-            else:
-                return visitor.visitChildren(self)
 
 
 
@@ -628,14 +465,12 @@ class MyCMinusParser ( Parser ):
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,1,self._ctx)
             if la_ == 1:
-                localctx = MyCMinusParser.AssignStatContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 53
                 self.assignStatement()
                 pass
 
             elif la_ == 2:
-                localctx = MyCMinusParser.PrintStatContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 54
                 self.match(MyCMinusParser.PRINT)
@@ -644,21 +479,18 @@ class MyCMinusParser ( Parser ):
                 pass
 
             elif la_ == 3:
-                localctx = MyCMinusParser.ExpStatContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
                 self.state = 56
                 self.expression()
                 pass
 
             elif la_ == 4:
-                localctx = MyCMinusParser.CondStatContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
                 self.state = 57
                 self.conditionalStat()
                 pass
 
             elif la_ == 5:
-                localctx = MyCMinusParser.EmptyStatContext(self, localctx)
                 self.enterOuterAlt(localctx, 5)
 
                 pass
@@ -678,46 +510,37 @@ class MyCMinusParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-
-        def getRuleIndex(self):
-            return MyCMinusParser.RULE_assignStatement
-
-     
-        def copyFrom(self, ctx:ParserRuleContext):
-            super().copyFrom(ctx)
-
-
-
-    class AssignmentContext(AssignStatementContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.AssignStatementContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
         def varType(self):
             return self.getTypedRuleContext(MyCMinusParser.VarTypeContext,0)
 
+
         def ID(self):
             return self.getToken(MyCMinusParser.ID, 0)
+
         def EQUALS(self):
             return self.getToken(MyCMinusParser.EQUALS, 0)
+
         def expression(self):
             return self.getTypedRuleContext(MyCMinusParser.ExpressionContext,0)
 
 
+        def getRuleIndex(self):
+            return MyCMinusParser.RULE_assignStatement
+
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterAssignment" ):
-                listener.enterAssignment(self)
+            if hasattr( listener, "enterAssignStatement" ):
+                listener.enterAssignStatement(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitAssignment" ):
-                listener.exitAssignment(self)
+            if hasattr( listener, "exitAssignStatement" ):
+                listener.exitAssignStatement(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitAssignment" ):
-                return visitor.visitAssignment(self)
+            if hasattr( visitor, "visitAssignStatement" ):
+                return visitor.visitAssignStatement(self)
             else:
                 return visitor.visitChildren(self)
+
 
 
 
@@ -726,7 +549,6 @@ class MyCMinusParser ( Parser ):
         localctx = MyCMinusParser.AssignStatementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 10, self.RULE_assignStatement)
         try:
-            localctx = MyCMinusParser.AssignmentContext(self, localctx)
             self.enterOuterAlt(localctx, 1)
             self.state = 61
             self.varType()
@@ -750,64 +572,31 @@ class MyCMinusParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def ifStatement(self):
+            return self.getTypedRuleContext(MyCMinusParser.IfStatementContext,0)
 
-        def getRuleIndex(self):
-            return MyCMinusParser.RULE_conditionalStat
-
-     
-        def copyFrom(self, ctx:ParserRuleContext):
-            super().copyFrom(ctx)
-
-
-
-    class WhileCondContext(ConditionalStatContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.ConditionalStatContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
 
         def whileStatement(self):
             return self.getTypedRuleContext(MyCMinusParser.WhileStatementContext,0)
 
 
+        def getRuleIndex(self):
+            return MyCMinusParser.RULE_conditionalStat
+
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterWhileCond" ):
-                listener.enterWhileCond(self)
+            if hasattr( listener, "enterConditionalStat" ):
+                listener.enterConditionalStat(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitWhileCond" ):
-                listener.exitWhileCond(self)
+            if hasattr( listener, "exitConditionalStat" ):
+                listener.exitConditionalStat(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitWhileCond" ):
-                return visitor.visitWhileCond(self)
+            if hasattr( visitor, "visitConditionalStat" ):
+                return visitor.visitConditionalStat(self)
             else:
                 return visitor.visitChildren(self)
 
-
-    class IfCondContext(ConditionalStatContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.ConditionalStatContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def ifStatement(self):
-            return self.getTypedRuleContext(MyCMinusParser.IfStatementContext,0)
-
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterIfCond" ):
-                listener.enterIfCond(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitIfCond" ):
-                listener.exitIfCond(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitIfCond" ):
-                return visitor.visitIfCond(self)
-            else:
-                return visitor.visitChildren(self)
 
 
 
@@ -820,13 +609,11 @@ class MyCMinusParser ( Parser ):
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [MyCMinusParser.IF]:
-                localctx = MyCMinusParser.IfCondContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 66
                 self.ifStatement()
                 pass
             elif token in [MyCMinusParser.WHILE]:
-                localctx = MyCMinusParser.WhileCondContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 67
                 self.whileStatement()
@@ -848,87 +635,46 @@ class MyCMinusParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-
-        def getRuleIndex(self):
-            return MyCMinusParser.RULE_ifStatement
-
-     
-        def copyFrom(self, ctx:ParserRuleContext):
-            super().copyFrom(ctx)
-
-
-
-    class IfStatContext(IfStatementContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.IfStatementContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
         def IF(self):
             return self.getToken(MyCMinusParser.IF, 0)
+
         def LPAR(self):
             return self.getToken(MyCMinusParser.LPAR, 0)
+
         def expression(self):
             return self.getTypedRuleContext(MyCMinusParser.ExpressionContext,0)
 
-        def RPAR(self):
-            return self.getToken(MyCMinusParser.RPAR, 0)
-        def block(self):
-            return self.getTypedRuleContext(MyCMinusParser.BlockContext,0)
-
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterIfStat" ):
-                listener.enterIfStat(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitIfStat" ):
-                listener.exitIfStat(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitIfStat" ):
-                return visitor.visitIfStat(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class IfelseStatContext(IfStatementContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.IfStatementContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def IF(self):
-            return self.getToken(MyCMinusParser.IF, 0)
-        def LPAR(self):
-            return self.getToken(MyCMinusParser.LPAR, 0)
-        def expression(self):
-            return self.getTypedRuleContext(MyCMinusParser.ExpressionContext,0)
 
         def RPAR(self):
             return self.getToken(MyCMinusParser.RPAR, 0)
+
         def block(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(MyCMinusParser.BlockContext)
             else:
                 return self.getTypedRuleContext(MyCMinusParser.BlockContext,i)
 
+
         def ELSE(self):
             return self.getToken(MyCMinusParser.ELSE, 0)
 
+        def getRuleIndex(self):
+            return MyCMinusParser.RULE_ifStatement
+
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterIfelseStat" ):
-                listener.enterIfelseStat(self)
+            if hasattr( listener, "enterIfStatement" ):
+                listener.enterIfStatement(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitIfelseStat" ):
-                listener.exitIfelseStat(self)
+            if hasattr( listener, "exitIfStatement" ):
+                listener.exitIfStatement(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitIfelseStat" ):
-                return visitor.visitIfelseStat(self)
+            if hasattr( visitor, "visitIfStatement" ):
+                return visitor.visitIfStatement(self)
             else:
                 return visitor.visitChildren(self)
+
 
 
 
@@ -941,7 +687,6 @@ class MyCMinusParser ( Parser ):
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,3,self._ctx)
             if la_ == 1:
-                localctx = MyCMinusParser.IfStatContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 70
                 self.match(MyCMinusParser.IF)
@@ -956,7 +701,6 @@ class MyCMinusParser ( Parser ):
                 pass
 
             elif la_ == 2:
-                localctx = MyCMinusParser.IfelseStatContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 76
                 self.match(MyCMinusParser.IF)
@@ -989,48 +733,40 @@ class MyCMinusParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-
-        def getRuleIndex(self):
-            return MyCMinusParser.RULE_whileStatement
-
-     
-        def copyFrom(self, ctx:ParserRuleContext):
-            super().copyFrom(ctx)
-
-
-
-    class WhileStatContext(WhileStatementContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.WhileStatementContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
         def WHILE(self):
             return self.getToken(MyCMinusParser.WHILE, 0)
+
         def LPAR(self):
             return self.getToken(MyCMinusParser.LPAR, 0)
+
         def expression(self):
             return self.getTypedRuleContext(MyCMinusParser.ExpressionContext,0)
 
+
         def RPAR(self):
             return self.getToken(MyCMinusParser.RPAR, 0)
+
         def block(self):
             return self.getTypedRuleContext(MyCMinusParser.BlockContext,0)
 
 
+        def getRuleIndex(self):
+            return MyCMinusParser.RULE_whileStatement
+
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterWhileStat" ):
-                listener.enterWhileStat(self)
+            if hasattr( listener, "enterWhileStatement" ):
+                listener.enterWhileStatement(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitWhileStat" ):
-                listener.exitWhileStat(self)
+            if hasattr( listener, "exitWhileStatement" ):
+                listener.exitWhileStatement(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitWhileStat" ):
-                return visitor.visitWhileStat(self)
+            if hasattr( visitor, "visitWhileStatement" ):
+                return visitor.visitWhileStatement(self)
             else:
                 return visitor.visitChildren(self)
+
 
 
 
@@ -1039,7 +775,6 @@ class MyCMinusParser ( Parser ):
         localctx = MyCMinusParser.WhileStatementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 16, self.RULE_whileStatement)
         try:
-            localctx = MyCMinusParser.WhileStatContext(self, localctx)
             self.enterOuterAlt(localctx, 1)
             self.state = 86
             self.match(MyCMinusParser.WHILE)
@@ -1065,39 +800,27 @@ class MyCMinusParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-
-        def getRuleIndex(self):
-            return MyCMinusParser.RULE_expression
-
-     
-        def copyFrom(self, ctx:ParserRuleContext):
-            super().copyFrom(ctx)
-
-
-
-    class LogicalOrExpContext(ExpressionContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.ExpressionContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
         def logical_or_expr(self):
             return self.getTypedRuleContext(MyCMinusParser.Logical_or_exprContext,0)
 
 
+        def getRuleIndex(self):
+            return MyCMinusParser.RULE_expression
+
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLogicalOrExp" ):
-                listener.enterLogicalOrExp(self)
+            if hasattr( listener, "enterExpression" ):
+                listener.enterExpression(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLogicalOrExp" ):
-                listener.exitLogicalOrExp(self)
+            if hasattr( listener, "exitExpression" ):
+                listener.exitExpression(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLogicalOrExp" ):
-                return visitor.visitLogicalOrExp(self)
+            if hasattr( visitor, "visitExpression" ):
+                return visitor.visitExpression(self)
             else:
                 return visitor.visitChildren(self)
+
 
 
 
@@ -1106,7 +829,6 @@ class MyCMinusParser ( Parser ):
         localctx = MyCMinusParser.ExpressionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 18, self.RULE_expression)
         try:
-            localctx = MyCMinusParser.LogicalOrExpContext(self, localctx)
             self.enterOuterAlt(localctx, 1)
             self.state = 92
             self.logical_or_expr(0)
@@ -1124,66 +846,31 @@ class MyCMinusParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def logical_and_expr(self):
+            return self.getTypedRuleContext(MyCMinusParser.Logical_and_exprContext,0)
 
-        def getRuleIndex(self):
-            return MyCMinusParser.RULE_logical_or_expr
-
-     
-        def copyFrom(self, ctx:ParserRuleContext):
-            super().copyFrom(ctx)
-
-
-    class LogicalOrAndContext(Logical_or_exprContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.Logical_or_exprContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
 
         def logical_or_expr(self):
             return self.getTypedRuleContext(MyCMinusParser.Logical_or_exprContext,0)
 
+
         def OR(self):
             return self.getToken(MyCMinusParser.OR, 0)
-        def logical_and_expr(self):
-            return self.getTypedRuleContext(MyCMinusParser.Logical_and_exprContext,0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLogicalOrAnd" ):
-                listener.enterLogicalOrAnd(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLogicalOrAnd" ):
-                listener.exitLogicalOrAnd(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLogicalOrAnd" ):
-                return visitor.visitLogicalOrAnd(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class LogicalAndContext(Logical_or_exprContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.Logical_or_exprContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def logical_and_expr(self):
-            return self.getTypedRuleContext(MyCMinusParser.Logical_and_exprContext,0)
-
+        def getRuleIndex(self):
+            return MyCMinusParser.RULE_logical_or_expr
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLogicalAnd" ):
-                listener.enterLogicalAnd(self)
+            if hasattr( listener, "enterLogical_or_expr" ):
+                listener.enterLogical_or_expr(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLogicalAnd" ):
-                listener.exitLogicalAnd(self)
+            if hasattr( listener, "exitLogical_or_expr" ):
+                listener.exitLogical_or_expr(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLogicalAnd" ):
-                return visitor.visitLogicalAnd(self)
+            if hasattr( visitor, "visitLogical_or_expr" ):
+                return visitor.visitLogical_or_expr(self)
             else:
                 return visitor.visitChildren(self)
 
@@ -1198,10 +885,6 @@ class MyCMinusParser ( Parser ):
         self.enterRecursionRule(localctx, 20, self.RULE_logical_or_expr, _p)
         try:
             self.enterOuterAlt(localctx, 1)
-            localctx = MyCMinusParser.LogicalAndContext(self, localctx)
-            self._ctx = localctx
-            _prevctx = localctx
-
             self.state = 95
             self.logical_and_expr(0)
             self._ctx.stop = self._input.LT(-1)
@@ -1213,7 +896,7 @@ class MyCMinusParser ( Parser ):
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    localctx = MyCMinusParser.LogicalOrAndContext(self, MyCMinusParser.Logical_or_exprContext(self, _parentctx, _parentState))
+                    localctx = MyCMinusParser.Logical_or_exprContext(self, _parentctx, _parentState)
                     self.pushNewRecursionContext(localctx, _startState, self.RULE_logical_or_expr)
                     self.state = 97
                     if not self.precpred(self._ctx, 1):
@@ -1241,66 +924,31 @@ class MyCMinusParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def equalityExp(self):
+            return self.getTypedRuleContext(MyCMinusParser.EqualityExpContext,0)
 
-        def getRuleIndex(self):
-            return MyCMinusParser.RULE_logical_and_expr
-
-     
-        def copyFrom(self, ctx:ParserRuleContext):
-            super().copyFrom(ctx)
-
-
-    class LogicalAndEQContext(Logical_and_exprContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.Logical_and_exprContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
 
         def logical_and_expr(self):
             return self.getTypedRuleContext(MyCMinusParser.Logical_and_exprContext,0)
 
+
         def AND(self):
             return self.getToken(MyCMinusParser.AND, 0)
-        def equalityExp(self):
-            return self.getTypedRuleContext(MyCMinusParser.EqualityExpContext,0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterLogicalAndEQ" ):
-                listener.enterLogicalAndEQ(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitLogicalAndEQ" ):
-                listener.exitLogicalAndEQ(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLogicalAndEQ" ):
-                return visitor.visitLogicalAndEQ(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class EqualityExpLabContext(Logical_and_exprContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.Logical_and_exprContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def equalityExp(self):
-            return self.getTypedRuleContext(MyCMinusParser.EqualityExpContext,0)
-
+        def getRuleIndex(self):
+            return MyCMinusParser.RULE_logical_and_expr
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterEqualityExpLab" ):
-                listener.enterEqualityExpLab(self)
+            if hasattr( listener, "enterLogical_and_expr" ):
+                listener.enterLogical_and_expr(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitEqualityExpLab" ):
-                listener.exitEqualityExpLab(self)
+            if hasattr( listener, "exitLogical_and_expr" ):
+                listener.exitLogical_and_expr(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitEqualityExpLab" ):
-                return visitor.visitEqualityExpLab(self)
+            if hasattr( visitor, "visitLogical_and_expr" ):
+                return visitor.visitLogical_and_expr(self)
             else:
                 return visitor.visitChildren(self)
 
@@ -1315,10 +963,6 @@ class MyCMinusParser ( Parser ):
         self.enterRecursionRule(localctx, 22, self.RULE_logical_and_expr, _p)
         try:
             self.enterOuterAlt(localctx, 1)
-            localctx = MyCMinusParser.EqualityExpLabContext(self, localctx)
-            self._ctx = localctx
-            _prevctx = localctx
-
             self.state = 106
             self.equalityExp(0)
             self._ctx.stop = self._input.LT(-1)
@@ -1330,7 +974,7 @@ class MyCMinusParser ( Parser ):
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    localctx = MyCMinusParser.LogicalAndEQContext(self, MyCMinusParser.Logical_and_exprContext(self, _parentctx, _parentState))
+                    localctx = MyCMinusParser.Logical_and_exprContext(self, _parentctx, _parentState)
                     self.pushNewRecursionContext(localctx, _startState, self.RULE_logical_and_expr)
                     self.state = 108
                     if not self.precpred(self._ctx, 1):
@@ -1358,68 +1002,34 @@ class MyCMinusParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-
-        def getRuleIndex(self):
-            return MyCMinusParser.RULE_equalityExp
-
-     
-        def copyFrom(self, ctx:ParserRuleContext):
-            super().copyFrom(ctx)
-
-
-    class RelationEqExpContext(EqualityExpContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.EqualityExpContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
         def relationExp(self):
             return self.getTypedRuleContext(MyCMinusParser.RelationExpContext,0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterRelationEqExp" ):
-                listener.enterRelationEqExp(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitRelationEqExp" ):
-                listener.exitRelationEqExp(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitRelationEqExp" ):
-                return visitor.visitRelationEqExp(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class EqRelationExpContext(EqualityExpContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.EqualityExpContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
 
         def equalityExp(self):
             return self.getTypedRuleContext(MyCMinusParser.EqualityExpContext,0)
 
-        def relationExp(self):
-            return self.getTypedRuleContext(MyCMinusParser.RelationExpContext,0)
 
         def EQUALTO(self):
             return self.getToken(MyCMinusParser.EQUALTO, 0)
+
         def NOTEQ(self):
             return self.getToken(MyCMinusParser.NOTEQ, 0)
 
+        def getRuleIndex(self):
+            return MyCMinusParser.RULE_equalityExp
+
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterEqRelationExp" ):
-                listener.enterEqRelationExp(self)
+            if hasattr( listener, "enterEqualityExp" ):
+                listener.enterEqualityExp(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitEqRelationExp" ):
-                listener.exitEqRelationExp(self)
+            if hasattr( listener, "exitEqualityExp" ):
+                listener.exitEqualityExp(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitEqRelationExp" ):
-                return visitor.visitEqRelationExp(self)
+            if hasattr( visitor, "visitEqualityExp" ):
+                return visitor.visitEqualityExp(self)
             else:
                 return visitor.visitChildren(self)
 
@@ -1435,10 +1045,6 @@ class MyCMinusParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            localctx = MyCMinusParser.RelationEqExpContext(self, localctx)
-            self._ctx = localctx
-            _prevctx = localctx
-
             self.state = 117
             self.relationExp(0)
             self._ctx.stop = self._input.LT(-1)
@@ -1450,7 +1056,7 @@ class MyCMinusParser ( Parser ):
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    localctx = MyCMinusParser.EqRelationExpContext(self, MyCMinusParser.EqualityExpContext(self, _parentctx, _parentState))
+                    localctx = MyCMinusParser.EqualityExpContext(self, _parentctx, _parentState)
                     self.pushNewRecursionContext(localctx, _startState, self.RULE_equalityExp)
                     self.state = 119
                     if not self.precpred(self._ctx, 1):
@@ -1483,72 +1089,40 @@ class MyCMinusParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-
-        def getRuleIndex(self):
-            return MyCMinusParser.RULE_relationExp
-
-     
-        def copyFrom(self, ctx:ParserRuleContext):
-            super().copyFrom(ctx)
-
-
-    class ArithmeticExpLabContext(RelationExpContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.RelationExpContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
         def arithmeticExp(self):
             return self.getTypedRuleContext(MyCMinusParser.ArithmeticExpContext,0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterArithmeticExpLab" ):
-                listener.enterArithmeticExpLab(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitArithmeticExpLab" ):
-                listener.exitArithmeticExpLab(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitArithmeticExpLab" ):
-                return visitor.visitArithmeticExpLab(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class RelAritExpContext(RelationExpContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.RelationExpContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
 
         def relationExp(self):
             return self.getTypedRuleContext(MyCMinusParser.RelationExpContext,0)
 
-        def arithmeticExp(self):
-            return self.getTypedRuleContext(MyCMinusParser.ArithmeticExpContext,0)
 
         def LTHAN(self):
             return self.getToken(MyCMinusParser.LTHAN, 0)
+
         def GTHAN(self):
             return self.getToken(MyCMinusParser.GTHAN, 0)
+
         def LEQUAL(self):
             return self.getToken(MyCMinusParser.LEQUAL, 0)
+
         def GEQUAL(self):
             return self.getToken(MyCMinusParser.GEQUAL, 0)
 
+        def getRuleIndex(self):
+            return MyCMinusParser.RULE_relationExp
+
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterRelAritExp" ):
-                listener.enterRelAritExp(self)
+            if hasattr( listener, "enterRelationExp" ):
+                listener.enterRelationExp(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitRelAritExp" ):
-                listener.exitRelAritExp(self)
+            if hasattr( listener, "exitRelationExp" ):
+                listener.exitRelationExp(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitRelAritExp" ):
-                return visitor.visitRelAritExp(self)
+            if hasattr( visitor, "visitRelationExp" ):
+                return visitor.visitRelationExp(self)
             else:
                 return visitor.visitChildren(self)
 
@@ -1564,10 +1138,6 @@ class MyCMinusParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            localctx = MyCMinusParser.ArithmeticExpLabContext(self, localctx)
-            self._ctx = localctx
-            _prevctx = localctx
-
             self.state = 128
             self.arithmeticExp(0)
             self._ctx.stop = self._input.LT(-1)
@@ -1579,7 +1149,7 @@ class MyCMinusParser ( Parser ):
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    localctx = MyCMinusParser.RelAritExpContext(self, MyCMinusParser.RelationExpContext(self, _parentctx, _parentState))
+                    localctx = MyCMinusParser.RelationExpContext(self, _parentctx, _parentState)
                     self.pushNewRecursionContext(localctx, _startState, self.RULE_relationExp)
                     self.state = 130
                     if not self.precpred(self._ctx, 1):
@@ -1612,68 +1182,34 @@ class MyCMinusParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def multiplicativeExp(self):
+            return self.getTypedRuleContext(MyCMinusParser.MultiplicativeExpContext,0)
 
-        def getRuleIndex(self):
-            return MyCMinusParser.RULE_arithmeticExp
-
-     
-        def copyFrom(self, ctx:ParserRuleContext):
-            super().copyFrom(ctx)
-
-
-    class AritMultExpContext(ArithmeticExpContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.ArithmeticExpContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
 
         def arithmeticExp(self):
             return self.getTypedRuleContext(MyCMinusParser.ArithmeticExpContext,0)
 
-        def multiplicativeExp(self):
-            return self.getTypedRuleContext(MyCMinusParser.MultiplicativeExpContext,0)
 
         def PLUS(self):
             return self.getToken(MyCMinusParser.PLUS, 0)
+
         def MINUS(self):
             return self.getToken(MyCMinusParser.MINUS, 0)
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterAritMultExp" ):
-                listener.enterAritMultExp(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitAritMultExp" ):
-                listener.exitAritMultExp(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitAritMultExp" ):
-                return visitor.visitAritMultExp(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class MultExpContext(ArithmeticExpContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.ArithmeticExpContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def multiplicativeExp(self):
-            return self.getTypedRuleContext(MyCMinusParser.MultiplicativeExpContext,0)
-
+        def getRuleIndex(self):
+            return MyCMinusParser.RULE_arithmeticExp
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterMultExp" ):
-                listener.enterMultExp(self)
+            if hasattr( listener, "enterArithmeticExp" ):
+                listener.enterArithmeticExp(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitMultExp" ):
-                listener.exitMultExp(self)
+            if hasattr( listener, "exitArithmeticExp" ):
+                listener.exitArithmeticExp(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitMultExp" ):
-                return visitor.visitMultExp(self)
+            if hasattr( visitor, "visitArithmeticExp" ):
+                return visitor.visitArithmeticExp(self)
             else:
                 return visitor.visitChildren(self)
 
@@ -1689,10 +1225,6 @@ class MyCMinusParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            localctx = MyCMinusParser.MultExpContext(self, localctx)
-            self._ctx = localctx
-            _prevctx = localctx
-
             self.state = 139
             self.multiplicativeExp(0)
             self._ctx.stop = self._input.LT(-1)
@@ -1704,7 +1236,7 @@ class MyCMinusParser ( Parser ):
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    localctx = MyCMinusParser.AritMultExpContext(self, MyCMinusParser.ArithmeticExpContext(self, _parentctx, _parentState))
+                    localctx = MyCMinusParser.ArithmeticExpContext(self, _parentctx, _parentState)
                     self.pushNewRecursionContext(localctx, _startState, self.RULE_arithmeticExp)
                     self.state = 141
                     if not self.precpred(self._ctx, 2):
@@ -1737,68 +1269,34 @@ class MyCMinusParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-
-        def getRuleIndex(self):
-            return MyCMinusParser.RULE_multiplicativeExp
-
-     
-        def copyFrom(self, ctx:ParserRuleContext):
-            super().copyFrom(ctx)
-
-
-    class FactorLabContext(MultiplicativeExpContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.MultiplicativeExpContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
         def factor(self):
             return self.getTypedRuleContext(MyCMinusParser.FactorContext,0)
 
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFactorLab" ):
-                listener.enterFactorLab(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFactorLab" ):
-                listener.exitFactorLab(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFactorLab" ):
-                return visitor.visitFactorLab(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class MultFactorExpContext(MultiplicativeExpContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.MultiplicativeExpContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
 
         def multiplicativeExp(self):
             return self.getTypedRuleContext(MyCMinusParser.MultiplicativeExpContext,0)
 
-        def factor(self):
-            return self.getTypedRuleContext(MyCMinusParser.FactorContext,0)
 
         def TIMES(self):
             return self.getToken(MyCMinusParser.TIMES, 0)
+
         def DIVIDE(self):
             return self.getToken(MyCMinusParser.DIVIDE, 0)
 
+        def getRuleIndex(self):
+            return MyCMinusParser.RULE_multiplicativeExp
+
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterMultFactorExp" ):
-                listener.enterMultFactorExp(self)
+            if hasattr( listener, "enterMultiplicativeExp" ):
+                listener.enterMultiplicativeExp(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitMultFactorExp" ):
-                listener.exitMultFactorExp(self)
+            if hasattr( listener, "exitMultiplicativeExp" ):
+                listener.exitMultiplicativeExp(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitMultFactorExp" ):
-                return visitor.visitMultFactorExp(self)
+            if hasattr( visitor, "visitMultiplicativeExp" ):
+                return visitor.visitMultiplicativeExp(self)
             else:
                 return visitor.visitChildren(self)
 
@@ -1814,10 +1312,6 @@ class MyCMinusParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            localctx = MyCMinusParser.FactorLabContext(self, localctx)
-            self._ctx = localctx
-            _prevctx = localctx
-
             self.state = 150
             self.factor()
             self._ctx.stop = self._input.LT(-1)
@@ -1829,7 +1323,7 @@ class MyCMinusParser ( Parser ):
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    localctx = MyCMinusParser.MultFactorExpContext(self, MyCMinusParser.MultiplicativeExpContext(self, _parentctx, _parentState))
+                    localctx = MyCMinusParser.MultiplicativeExpContext(self, _parentctx, _parentState)
                     self.pushNewRecursionContext(localctx, _startState, self.RULE_multiplicativeExp)
                     self.state = 152
                     if not self.precpred(self._ctx, 2):
@@ -1862,121 +1356,45 @@ class MyCMinusParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-
-        def getRuleIndex(self):
-            return MyCMinusParser.RULE_factor
-
-     
-        def copyFrom(self, ctx:ParserRuleContext):
-            super().copyFrom(ctx)
-
-
-
-    class NumberCallContext(FactorContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.FactorContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def NUMBER(self):
-            return self.getToken(MyCMinusParser.NUMBER, 0)
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterNumberCall" ):
-                listener.enterNumberCall(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitNumberCall" ):
-                listener.exitNumberCall(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitNumberCall" ):
-                return visitor.visitNumberCall(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class IdCallContext(FactorContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.FactorContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def ID(self):
-            return self.getToken(MyCMinusParser.ID, 0)
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterIdCall" ):
-                listener.enterIdCall(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitIdCall" ):
-                listener.exitIdCall(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitIdCall" ):
-                return visitor.visitIdCall(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class ParExpContext(FactorContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.FactorContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
         def LPAR(self):
             return self.getToken(MyCMinusParser.LPAR, 0)
+
         def expression(self):
             return self.getTypedRuleContext(MyCMinusParser.ExpressionContext,0)
+
 
         def RPAR(self):
             return self.getToken(MyCMinusParser.RPAR, 0)
 
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterParExp" ):
-                listener.enterParExp(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitParExp" ):
-                listener.exitParExp(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitParExp" ):
-                return visitor.visitParExp(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class ArrayCallContext(FactorContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.FactorContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
+        def NUMBER(self):
+            return self.getToken(MyCMinusParser.NUMBER, 0)
 
         def ID(self):
             return self.getToken(MyCMinusParser.ID, 0)
+
         def LBRAC(self):
             return self.getToken(MyCMinusParser.LBRAC, 0)
-        def NUMBER(self):
-            return self.getToken(MyCMinusParser.NUMBER, 0)
+
         def RBRAC(self):
             return self.getToken(MyCMinusParser.RBRAC, 0)
 
+        def getRuleIndex(self):
+            return MyCMinusParser.RULE_factor
+
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterArrayCall" ):
-                listener.enterArrayCall(self)
+            if hasattr( listener, "enterFactor" ):
+                listener.enterFactor(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitArrayCall" ):
-                listener.exitArrayCall(self)
+            if hasattr( listener, "exitFactor" ):
+                listener.exitFactor(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitArrayCall" ):
-                return visitor.visitArrayCall(self)
+            if hasattr( visitor, "visitFactor" ):
+                return visitor.visitFactor(self)
             else:
                 return visitor.visitChildren(self)
+
 
 
 
@@ -1989,7 +1407,6 @@ class MyCMinusParser ( Parser ):
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,10,self._ctx)
             if la_ == 1:
-                localctx = MyCMinusParser.ParExpContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 160
                 self.match(MyCMinusParser.LPAR)
@@ -2000,21 +1417,18 @@ class MyCMinusParser ( Parser ):
                 pass
 
             elif la_ == 2:
-                localctx = MyCMinusParser.NumberCallContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 164
                 self.match(MyCMinusParser.NUMBER)
                 pass
 
             elif la_ == 3:
-                localctx = MyCMinusParser.IdCallContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
                 self.state = 165
                 self.match(MyCMinusParser.ID)
                 pass
 
             elif la_ == 4:
-                localctx = MyCMinusParser.ArrayCallContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
                 self.state = 166
                 self.match(MyCMinusParser.ID)

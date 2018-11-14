@@ -15,10 +15,7 @@ statement:
 	type_ID ID (EQUALS expression)?	# varDeclStat
 	| PRINT expression				# printStat
 	| ID EQUALS expression			# assignment
-	| IF LPAR expression RPAR LCURL statementList RCURL (
-		ELSE LCURL statementList RCURL
-	)? # ifelseStat
-	// | RETURN expression? SEMI								# returnStat
+	| IF LPAR expression RPAR LCURL statementList RCURL (ELSE LCURL statementList RCURL)? # ifelseStat
 	| expression	# expStat
 	|				# emptyStat;
 
@@ -81,8 +78,6 @@ VOID: 'void';
 STRING: 'string';
 CHAR: 'char';
 BOOL: 'bool';
-
-// RETURN: 'return';
 
 ID: LETTER (DIGIT | LETTER)*;
 NUMBER: DIGIT+ ('.' DIGIT+)?;
