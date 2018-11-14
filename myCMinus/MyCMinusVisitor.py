@@ -3,7 +3,7 @@ from antlr4 import *
 if __name__ is not None and "." in __name__:
     from .MyCMinusParser import MyCMinusParser
 else:
-    from MyCMinusParser import MyCMinusParser
+    from myCMinus.MyCMinusParser import MyCMinusParser
 
 # This class defines a complete generic visitor for a parse tree produced by MyCMinusParser.
 

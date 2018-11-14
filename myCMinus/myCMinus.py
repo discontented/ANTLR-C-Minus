@@ -1,6 +1,6 @@
 
 from antlr4 import *
-from MyCMinusListener import MyCMinusListener
+from myCMinus.MyCMinusListener import MyCMinusListener
 
 class Labeller(MyCMinusListener):
 	def enterMainProg(self, ctx):

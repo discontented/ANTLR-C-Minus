@@ -1,7 +1,7 @@
 import sys
 from antlr4 import *
-from MyCMinusParser import MyCMinusParser
-from MyCMinusListener import MyCMinusListener
+from myCMinus.MyCMinusParser import MyCMinusParser
+from myCMinus.MyCMinusListener import MyCMinusListener
 
 
 class Listener(MyCMinusListener):

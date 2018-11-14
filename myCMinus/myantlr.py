@@ -2,10 +2,10 @@
 import sys
 from antlr4 import *
 from antlr4.tree.Trees import Trees
-from MyCMinusLexer import MyCMinusLexer
-from MyCMinusParser import MyCMinusParser
-from MyCMinusListener import MyCMinusListener
-from Listener import Listener
+from myCMinus.MyCMinusLexer import MyCMinusLexer
+from myCMinus.MyCMinusParser import MyCMinusParser
+from myCMinus.MyCMinusListener import MyCMinusListener
+from myCMinus.Listener import Listener
 
 def main(argv):
     input = InputStream(argv)
