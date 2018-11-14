@@ -1,11 +1,9 @@
-
-import sys
 from antlr4 import *
-from antlr4.tree.Trees import Trees
-from myCMinus.MyCMinusLexer import MyCMinusLexer
-from myCMinus.MyCMinusParser import MyCMinusParser
-from myCMinus.MyCMinusListener import MyCMinusListener
-from myCMinus.Listener import Listener
+
+from Listener import Listener
+from gen.MyCMinusLexer import MyCMinusLexer
+from gen.MyCMinusParser import MyCMinusParser
+
 
 def main(argv):
     input = InputStream(argv)

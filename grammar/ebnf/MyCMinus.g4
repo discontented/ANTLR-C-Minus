@@ -4,29 +4,23 @@ grammar MyCMinus;
  Parser Rules
  */
 
-program: (functionDecl | varDecl)+ # mainProg;
+program: statementList # mainProg;
 
-varDecl: type ID (EQUALS expression)? SEMI # varDeclaration;
+statementList:
+	(statement SEMI)+						# stat;
 
-type: INT | FLOAT | VOID | BOOL | STRING | CHAR # IDtype;
-
-functionDecl:
-	type ID LPAR parameters? RPAR block # functionDeclaration;
-
-parameters: parameter (COMMA parameter)* # parameterList;
-
-parameter: type ID # funcPar;
-
-block: LCURL (statement)* RCURL # blockStat;
+type_ID: INT | FLOAT | VOID | BOOL | STRING | CHAR # IDtype;
 
 statement:
-	varDecl SEMI									# varDeclStat
-	| PRINT expression SEMI							# printStat
-	| ID EQUALS expression SEMI						# assignment
-	| IF LPAR expression RPAR block (ELSE block)?	# ifelseStat
-	| RETURN expression? SEMI						# returnStat
-	| expression SEMI								# expStat
-	| SEMI											# emptyStat;
+	type_ID ID (EQUALS expression)?	# varDeclStat
+	| PRINT expression				# printStat
+	| ID EQUALS expression			# assignment
+	| IF LPAR expression RPAR LCURL statementList RCURL (
+		ELSE LCURL statementList RCURL
+	)? # ifelseStat
+	// | RETURN expression? SEMI								# returnStat
+	| expression	# expStat
+	|				# emptyStat;
 
 expression:
 	ID LPAR exprList? RPAR										# funcCall
@@ -88,7 +82,7 @@ STRING: 'string';
 CHAR: 'char';
 BOOL: 'bool';
 
-RETURN: 'return';
+// RETURN: 'return';
 
 ID: LETTER (DIGIT | LETTER)*;
 NUMBER: DIGIT+ ('.' DIGIT+)?;
