@@ -1,4 +1,4 @@
-# Generated from C:/Users/jcorn/PycharmProjects/python-p4/grammar/og\MyCMinus.g4 by ANTLR 4.7
+# Generated from C:/Users/jcorn/PycharmProjects/python-p4/grammar/ebnf\MyCMinus.g4 by ANTLR 4.7
 from antlr4 import *
 if __name__ is not None and "." in __name__:
     from .MyCMinusParser import MyCMinusParser
@@ -14,11 +14,6 @@ class MyCMinusVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by MyCMinusParser#block.
-    def visitBlock(self, ctx:MyCMinusParser.BlockContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by MyCMinusParser#statementList.
     def visitStatementList(self, ctx:MyCMinusParser.StatementListContext):
         return self.visitChildren(ctx)
@@ -29,18 +24,33 @@ class MyCMinusVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by MyCMinusParser#statement.
-    def visitStatement(self, ctx:MyCMinusParser.StatementContext):
+    # Visit a parse tree produced by MyCMinusParser#varDeclStat.
+    def visitVarDeclStat(self, ctx:MyCMinusParser.VarDeclStatContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by MyCMinusParser#assignStatement.
-    def visitAssignStatement(self, ctx:MyCMinusParser.AssignStatementContext):
+    # Visit a parse tree produced by MyCMinusParser#assignment.
+    def visitAssignment(self, ctx:MyCMinusParser.AssignmentContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MyCMinusParser#printStat.
+    def visitPrintStat(self, ctx:MyCMinusParser.PrintStatContext):
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by MyCMinusParser#conditionalStat.
     def visitConditionalStat(self, ctx:MyCMinusParser.ConditionalStatContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MyCMinusParser#expStat.
+    def visitExpStat(self, ctx:MyCMinusParser.ExpStatContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MyCMinusParser#block.
+    def visitBlock(self, ctx:MyCMinusParser.BlockContext):
         return self.visitChildren(ctx)
 
 
@@ -54,26 +64,6 @@ class MyCMinusVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by MyCMinusParser#expression.
-    def visitExpression(self, ctx:MyCMinusParser.ExpressionContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by MyCMinusParser#logical_or_expr.
-    def visitLogical_or_expr(self, ctx:MyCMinusParser.Logical_or_exprContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by MyCMinusParser#logical_and_expr.
-    def visitLogical_and_expr(self, ctx:MyCMinusParser.Logical_and_exprContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by MyCMinusParser#equalityExp.
-    def visitEqualityExp(self, ctx:MyCMinusParser.EqualityExpContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by MyCMinusParser#relationExp.
     def visitRelationExp(self, ctx:MyCMinusParser.RelationExpContext):
         return self.visitChildren(ctx)
@@ -84,13 +74,53 @@ class MyCMinusVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by MyCMinusParser#multiplicativeExp.
-    def visitMultiplicativeExp(self, ctx:MyCMinusParser.MultiplicativeExpContext):
+    # Visit a parse tree produced by MyCMinusParser#idCall.
+    def visitIdCall(self, ctx:MyCMinusParser.IdCallContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by MyCMinusParser#factor.
-    def visitFactor(self, ctx:MyCMinusParser.FactorContext):
+    # Visit a parse tree produced by MyCMinusParser#unaryExp.
+    def visitUnaryExp(self, ctx:MyCMinusParser.UnaryExpContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MyCMinusParser#equalityExp.
+    def visitEqualityExp(self, ctx:MyCMinusParser.EqualityExpContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MyCMinusParser#parExp.
+    def visitParExp(self, ctx:MyCMinusParser.ParExpContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MyCMinusParser#multExp.
+    def visitMultExp(self, ctx:MyCMinusParser.MultExpContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MyCMinusParser#funcCall.
+    def visitFuncCall(self, ctx:MyCMinusParser.FuncCallContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MyCMinusParser#primNum.
+    def visitPrimNum(self, ctx:MyCMinusParser.PrimNumContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MyCMinusParser#logicalExp.
+    def visitLogicalExp(self, ctx:MyCMinusParser.LogicalExpContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MyCMinusParser#arrayCall.
+    def visitArrayCall(self, ctx:MyCMinusParser.ArrayCallContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MyCMinusParser#expressionList.
+    def visitExpressionList(self, ctx:MyCMinusParser.ExpressionListContext):
         return self.visitChildren(ctx)
 
 

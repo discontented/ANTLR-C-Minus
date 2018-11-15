@@ -1,4 +1,4 @@
-# Generated from C:/Users/jcorn/PycharmProjects/python-p4/grammar/og\MyCMinus.g4 by ANTLR 4.7
+# Generated from C:/Users/jcorn/PycharmProjects/python-p4/grammar/ebnf\MyCMinus.g4 by ANTLR 4.7
 from antlr4 import *
 if __name__ is not None and "." in __name__:
     from .MyCMinusParser import MyCMinusParser
@@ -14,15 +14,6 @@ class MyCMinusListener(ParseTreeListener):
 
     # Exit a parse tree produced by MyCMinusParser#program.
     def exitProgram(self, ctx:MyCMinusParser.ProgramContext):
-        pass
-
-
-    # Enter a parse tree produced by MyCMinusParser#block.
-    def enterBlock(self, ctx:MyCMinusParser.BlockContext):
-        pass
-
-    # Exit a parse tree produced by MyCMinusParser#block.
-    def exitBlock(self, ctx:MyCMinusParser.BlockContext):
         pass
 
 
@@ -44,21 +35,30 @@ class MyCMinusListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by MyCMinusParser#statement.
-    def enterStatement(self, ctx:MyCMinusParser.StatementContext):
+    # Enter a parse tree produced by MyCMinusParser#varDeclStat.
+    def enterVarDeclStat(self, ctx:MyCMinusParser.VarDeclStatContext):
         pass
 
-    # Exit a parse tree produced by MyCMinusParser#statement.
-    def exitStatement(self, ctx:MyCMinusParser.StatementContext):
+    # Exit a parse tree produced by MyCMinusParser#varDeclStat.
+    def exitVarDeclStat(self, ctx:MyCMinusParser.VarDeclStatContext):
         pass
 
 
-    # Enter a parse tree produced by MyCMinusParser#assignStatement.
-    def enterAssignStatement(self, ctx:MyCMinusParser.AssignStatementContext):
+    # Enter a parse tree produced by MyCMinusParser#assignment.
+    def enterAssignment(self, ctx:MyCMinusParser.AssignmentContext):
         pass
 
-    # Exit a parse tree produced by MyCMinusParser#assignStatement.
-    def exitAssignStatement(self, ctx:MyCMinusParser.AssignStatementContext):
+    # Exit a parse tree produced by MyCMinusParser#assignment.
+    def exitAssignment(self, ctx:MyCMinusParser.AssignmentContext):
+        pass
+
+
+    # Enter a parse tree produced by MyCMinusParser#printStat.
+    def enterPrintStat(self, ctx:MyCMinusParser.PrintStatContext):
+        pass
+
+    # Exit a parse tree produced by MyCMinusParser#printStat.
+    def exitPrintStat(self, ctx:MyCMinusParser.PrintStatContext):
         pass
 
 
@@ -68,6 +68,24 @@ class MyCMinusListener(ParseTreeListener):
 
     # Exit a parse tree produced by MyCMinusParser#conditionalStat.
     def exitConditionalStat(self, ctx:MyCMinusParser.ConditionalStatContext):
+        pass
+
+
+    # Enter a parse tree produced by MyCMinusParser#expStat.
+    def enterExpStat(self, ctx:MyCMinusParser.ExpStatContext):
+        pass
+
+    # Exit a parse tree produced by MyCMinusParser#expStat.
+    def exitExpStat(self, ctx:MyCMinusParser.ExpStatContext):
+        pass
+
+
+    # Enter a parse tree produced by MyCMinusParser#block.
+    def enterBlock(self, ctx:MyCMinusParser.BlockContext):
+        pass
+
+    # Exit a parse tree produced by MyCMinusParser#block.
+    def exitBlock(self, ctx:MyCMinusParser.BlockContext):
         pass
 
 
@@ -89,42 +107,6 @@ class MyCMinusListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by MyCMinusParser#expression.
-    def enterExpression(self, ctx:MyCMinusParser.ExpressionContext):
-        pass
-
-    # Exit a parse tree produced by MyCMinusParser#expression.
-    def exitExpression(self, ctx:MyCMinusParser.ExpressionContext):
-        pass
-
-
-    # Enter a parse tree produced by MyCMinusParser#logical_or_expr.
-    def enterLogical_or_expr(self, ctx:MyCMinusParser.Logical_or_exprContext):
-        pass
-
-    # Exit a parse tree produced by MyCMinusParser#logical_or_expr.
-    def exitLogical_or_expr(self, ctx:MyCMinusParser.Logical_or_exprContext):
-        pass
-
-
-    # Enter a parse tree produced by MyCMinusParser#logical_and_expr.
-    def enterLogical_and_expr(self, ctx:MyCMinusParser.Logical_and_exprContext):
-        pass
-
-    # Exit a parse tree produced by MyCMinusParser#logical_and_expr.
-    def exitLogical_and_expr(self, ctx:MyCMinusParser.Logical_and_exprContext):
-        pass
-
-
-    # Enter a parse tree produced by MyCMinusParser#equalityExp.
-    def enterEqualityExp(self, ctx:MyCMinusParser.EqualityExpContext):
-        pass
-
-    # Exit a parse tree produced by MyCMinusParser#equalityExp.
-    def exitEqualityExp(self, ctx:MyCMinusParser.EqualityExpContext):
-        pass
-
-
     # Enter a parse tree produced by MyCMinusParser#relationExp.
     def enterRelationExp(self, ctx:MyCMinusParser.RelationExpContext):
         pass
@@ -143,21 +125,93 @@ class MyCMinusListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by MyCMinusParser#multiplicativeExp.
-    def enterMultiplicativeExp(self, ctx:MyCMinusParser.MultiplicativeExpContext):
+    # Enter a parse tree produced by MyCMinusParser#idCall.
+    def enterIdCall(self, ctx:MyCMinusParser.IdCallContext):
         pass
 
-    # Exit a parse tree produced by MyCMinusParser#multiplicativeExp.
-    def exitMultiplicativeExp(self, ctx:MyCMinusParser.MultiplicativeExpContext):
+    # Exit a parse tree produced by MyCMinusParser#idCall.
+    def exitIdCall(self, ctx:MyCMinusParser.IdCallContext):
         pass
 
 
-    # Enter a parse tree produced by MyCMinusParser#factor.
-    def enterFactor(self, ctx:MyCMinusParser.FactorContext):
+    # Enter a parse tree produced by MyCMinusParser#unaryExp.
+    def enterUnaryExp(self, ctx:MyCMinusParser.UnaryExpContext):
         pass
 
-    # Exit a parse tree produced by MyCMinusParser#factor.
-    def exitFactor(self, ctx:MyCMinusParser.FactorContext):
+    # Exit a parse tree produced by MyCMinusParser#unaryExp.
+    def exitUnaryExp(self, ctx:MyCMinusParser.UnaryExpContext):
+        pass
+
+
+    # Enter a parse tree produced by MyCMinusParser#equalityExp.
+    def enterEqualityExp(self, ctx:MyCMinusParser.EqualityExpContext):
+        pass
+
+    # Exit a parse tree produced by MyCMinusParser#equalityExp.
+    def exitEqualityExp(self, ctx:MyCMinusParser.EqualityExpContext):
+        pass
+
+
+    # Enter a parse tree produced by MyCMinusParser#parExp.
+    def enterParExp(self, ctx:MyCMinusParser.ParExpContext):
+        pass
+
+    # Exit a parse tree produced by MyCMinusParser#parExp.
+    def exitParExp(self, ctx:MyCMinusParser.ParExpContext):
+        pass
+
+
+    # Enter a parse tree produced by MyCMinusParser#multExp.
+    def enterMultExp(self, ctx:MyCMinusParser.MultExpContext):
+        pass
+
+    # Exit a parse tree produced by MyCMinusParser#multExp.
+    def exitMultExp(self, ctx:MyCMinusParser.MultExpContext):
+        pass
+
+
+    # Enter a parse tree produced by MyCMinusParser#funcCall.
+    def enterFuncCall(self, ctx:MyCMinusParser.FuncCallContext):
+        pass
+
+    # Exit a parse tree produced by MyCMinusParser#funcCall.
+    def exitFuncCall(self, ctx:MyCMinusParser.FuncCallContext):
+        pass
+
+
+    # Enter a parse tree produced by MyCMinusParser#primNum.
+    def enterPrimNum(self, ctx:MyCMinusParser.PrimNumContext):
+        pass
+
+    # Exit a parse tree produced by MyCMinusParser#primNum.
+    def exitPrimNum(self, ctx:MyCMinusParser.PrimNumContext):
+        pass
+
+
+    # Enter a parse tree produced by MyCMinusParser#logicalExp.
+    def enterLogicalExp(self, ctx:MyCMinusParser.LogicalExpContext):
+        pass
+
+    # Exit a parse tree produced by MyCMinusParser#logicalExp.
+    def exitLogicalExp(self, ctx:MyCMinusParser.LogicalExpContext):
+        pass
+
+
+    # Enter a parse tree produced by MyCMinusParser#arrayCall.
+    def enterArrayCall(self, ctx:MyCMinusParser.ArrayCallContext):
+        pass
+
+    # Exit a parse tree produced by MyCMinusParser#arrayCall.
+    def exitArrayCall(self, ctx:MyCMinusParser.ArrayCallContext):
+        pass
+
+
+    # Enter a parse tree produced by MyCMinusParser#expressionList.
+    def enterExpressionList(self, ctx:MyCMinusParser.ExpressionListContext):
+        pass
+
+    # Exit a parse tree produced by MyCMinusParser#expressionList.
+    def exitExpressionList(self, ctx:MyCMinusParser.ExpressionListContext):
         pass
 
 

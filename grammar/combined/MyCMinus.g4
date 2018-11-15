@@ -7,28 +7,37 @@ grammar MyCMinus;
 program: statementList ;
 
 statementList:
-	(statement SEMI)*
+	statementList SEMI statement
+	| statement
 	;
 
-varType: INT | FLOAT | VOID | BOOL | STRING | CHAR ;
+// varDecl: vartype ID (EQUALS expression)? SEMI # varDeclaration;
+
+varType: INT | FLOAT | VOID | BOOL | STRING | CHAR # IDtype;
 
 statement:
-	varType ID (EQUALS expression)?	# varDeclStat
-	| ID EQUALS expression			# assignment
-	| PRINT expression				# printStat
-	| conditionalStatement          # conditionalStat
-	| expression	                # expStat
-	| LCURL statementList RCURL     # block
+	assignStatement
+	| PRINT expression
+	| expression
+	| conditionalStat
+	| LCURL statementList RCURL
+	|
 	;
 
-conditionalStatement:
-	IF LPAR expression RPAR statement (ELSE statement)?     #ifStatement
-	| WHILE LPAR expression RPAR statement                  #whileStatement
+assignStatement: varType ID EQUALS expression;
+
+conditionalStat:
+	ifStatement
+	| whileStatement
 	;
+
+ifStatement:
+	IF LPAR expression RPAR statement (ELSE statement)?  ;
+
+whileStatement: WHILE LPAR expression RPAR statementList ;
 
 expression:
-	ID LPAR exprList? RPAR										# funcCall
-	| ID LBRAC expression RBRAC									# arrayCall
+	ID LBRAC expression RBRAC									# arrayCall
 	| NOT expression											# unaryExp
 	| expression (OR | AND) expression							# logicalExp
 	| expression (LTHAN | GTHAN | LEQUAL | GEQUAL) expression	# relationExp
@@ -38,9 +47,6 @@ expression:
 	| ID														# idCall
 	| NUMBER													# primNum
 	| LPAR expression RPAR										# parExp;
-
-exprList: expression (COMMA expression)* # expressionList;
-
 /*
  lexer rules
  */
@@ -85,6 +91,8 @@ VOID: 'void';
 STRING: 'string';
 CHAR: 'char';
 BOOL: 'bool';
+
+RETURN: 'return';
 
 ID: LETTER (DIGIT | LETTER)*;
 NUMBER: DIGIT+ ('.' DIGIT+)?;

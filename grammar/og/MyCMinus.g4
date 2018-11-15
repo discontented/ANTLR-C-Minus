@@ -16,7 +16,8 @@ statementList:
 
 // varDecl: vartype ID (EQUALS expression)? SEMI # varDeclaration;
 
-varType: INT | FLOAT | VOID | BOOL | STRING | CHAR # IDtype;
+varType: INT | FLOAT | VOID | BOOL | STRING | CHAR
+;
 
 statement:
 	assignStatement
@@ -129,4 +130,4 @@ RETURN: 'return';
 ID: LETTER (DIGIT | LETTER)*;
 NUMBER: DIGIT+ ('.' DIGIT+)?;
 
-WS: [ \n\t]+ -> skip;
+WS: [ \r\n\t]+ -> skip;
