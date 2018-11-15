@@ -11,8 +11,11 @@ class Listener(MyCMinusListener):
         self.label += 1
         var_type = ctx.varType().getText()
         id = ctx.ID().getText()
-        value = ctx.expression().getText()
-        print("%s %s = %s /*block %d" % (var_type, id, value, self.label))
+        value = ctx.expression()
+        if not(value):
+            print("%s %s /*block %d" % (var_type, id, self.label))
+        else:
+            print("%s %s = %s /*block %d" % (var_type, id, value.getText(), self.label))
 
     # def enterEqualityExp(self, ctx:MyCMinusParser.EqualityExpContext):
     #     self.label += 1
