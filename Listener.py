@@ -7,8 +7,12 @@ from gen.MyCMinusListener import MyCMinusListener
 class Listener(MyCMinusListener):
     label = 0;
 
-    def enterVarDeclStat(self, ctx:MyCMinusParser.VarDeclStatContext):
+    def labeller(self, ctx):
         self.label += 1
+        ctx.__setattr__("label", self.label)
+
+    def enterVarDeclStat(self, ctx:MyCMinusParser.VarDeclStatContext):
+        self.labeller(ctx)
         var_type = ctx.varType().getText()
         id = ctx.ID().getText()
         value = ctx.expression()
@@ -22,13 +26,13 @@ class Listener(MyCMinusListener):
     #     print("%s /* block %d" % (ctx.getText(), self.label))
 
     def enterConditionalStat(self, ctx:MyCMinusParser.ConditionalStatContext):
-        self.label += 1
+        self.labeller(ctx)
         child = ctx.conditionalStatement()
         exp = child.expression()
         print("%s /* block %d" % (exp.getText(), self.label))
 
     def enterAssignment(self, ctx:MyCMinusParser.AssignmentContext):
-        self.label += 1
+        self.labeller(ctx)
         print("%s /* block %d" % (ctx.getText(), self.label))
 
 

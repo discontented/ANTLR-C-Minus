@@ -3,6 +3,7 @@ from antlr4 import *
 from Listener import Listener
 from GraphListener import GraphListener
 from genSet import GenListener, KillListener
+from Analyzer import Analyzer
 from gen.MyCMinusLexer import MyCMinusLexer
 from gen.MyCMinusParser import MyCMinusParser
 
@@ -15,13 +16,16 @@ def main(argv):
     parser = MyCMinusParser(stream)
     tree = parser.program()
 
+    walker = ParseTreeWalker()
     # print(Trees.toStringTree(tree, None, parser))
     print("--Control Flow Graph--")
-    # listener = Listener()
+    listener = Listener()
+    walker.walk(listener, tree)
+    analyzer = Analyzer(listener.label)
     # graphListener = GraphListener()
     genListener = GenListener()
     killListener = KillListener()
-    walker = ParseTreeWalker()
+
     walker.walk(genListener, tree)
     walker.walk(killListener, tree)
     genListener.printGenSet()
