@@ -35,6 +35,15 @@ class MyCMinusListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by MyCMinusParser#varSingleDecl.
+    def enterVarSingleDecl(self, ctx:MyCMinusParser.VarSingleDeclContext):
+        pass
+
+    # Exit a parse tree produced by MyCMinusParser#varSingleDecl.
+    def exitVarSingleDecl(self, ctx:MyCMinusParser.VarSingleDeclContext):
+        pass
+
+
     # Enter a parse tree produced by MyCMinusParser#varDeclStat.
     def enterVarDeclStat(self, ctx:MyCMinusParser.VarDeclStatContext):
         pass

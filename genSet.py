@@ -11,6 +11,7 @@ def labeller(killGenSet, ctx):
 class KillListener(MyCMinusListener):
     # [ 1: {x,y}, 2: {null} ]
     killSet = []
+    finalKillSet = []
 
     def enterVarDeclStat(self, ctx: MyCMinusParser.VarDeclStatContext):
         labeller(self.killSet, ctx)
@@ -18,23 +19,29 @@ class KillListener(MyCMinusListener):
     def enterAssignment(self, ctx: MyCMinusParser.AssignmentContext):
         labeller(self.killSet, ctx)
 
-    def printKillSet(self):
-        print("kill set: ")
+    def printKillSet(self, labels):
         counter = 1
         index = 0
-        while(counter < 6):
-            genLabel = self.killSet[index][0]
-            if (genLabel != counter):
-                print("%s empty" % counter)
+        while (counter <= labels):
+            if (index < len(self.killSet)):
+                genLabel = self.killSet[index][0]
             else:
-                print(self.killSet[index])
+                genLabel = -1
+            if (genLabel != counter):
+                self.finalKillSet.append((counter, "{empty}"))
+            else:
+                self.finalKillSet.append(self.killSet[index])
                 index = index + 1
             counter += 1
 
+        print("kill set: ")
+        for i in self.finalKillSet:
+            print(i)
 
 class GenListener(MyCMinusListener):
     # [ 1: {x,y}, 2: {null} ]
     genSet = []
+    finalGenSet = []
 
     # def enterIdCall(self, ctx: MyCMinusParser.IdCallContext):
     #     self.genSet.append(set(ctx.ID().getText()))
@@ -56,13 +63,22 @@ class GenListener(MyCMinusListener):
         localSet = set()
 
         try:
-            for i in children:
-                localID = i.ID().getText()
-                localSet.add(localID)
+            if(isinstance(children, list)):
+                for i in children:
+                    localID = i.ID().getText()
+                    localSet.add(localID)
+            else:
+                localSet.add(children.ID().getText())
         except:
             pass
+        if(len(localSet) > 0):
+            self.genSet.append((label, localSet))
 
-        self.genSet.append((label, localSet))
+
+    def enterVarDeclStat(self, ctx:MyCMinusParser.VarDeclStatContext):
+        # label = ctx.parentCtx.__getattribute__("label")
+        label = ctx.__getattribute__("label")
+        self.expressionSet(ctx, label)
 
     def enterMultExp(self, ctx:MyCMinusParser.MultExpContext):
         label = ctx.parentCtx.__getattribute__("label")
@@ -78,18 +94,29 @@ class GenListener(MyCMinusListener):
     #     for i in range(len(child)):
     #         print(i.enterIdCall())
 
-    def enterIdCall(self, ctx:MyCMinusParser.IdCallContext):
-        return ctx.getText()
+    def enterConditionalStat(self, ctx:MyCMinusParser.ConditionalStatContext):
+        label = ctx.__getattribute__("label")
+        self.expressionSet(ctx.conditionalStatement().expression(), label)
 
-    def printGenSet(self):
-        print("gen set: ")
+    def enterAssignment(self, ctx:MyCMinusParser.AssignmentContext):
+        label = ctx.__getattribute__("label")
+        self.expressionSet(ctx, label)
+
+    def printGenSet(self, labels):
         counter = 1
         index = 0
-        while(counter < 6):
-            genLabel = self.genSet[index][0]
-            if (genLabel != counter):
-                print("%s empty" % counter)
+        while(counter <= labels):
+            if (index < len(self.genSet)):
+                genLabel = self.genSet[index][0]
             else:
-                print(self.genSet[index])
+                genLabel = -1
+            if (genLabel != counter):
+                self.finalGenSet.append(( counter, "{empty}"))
+            else:
+                self.finalGenSet.append(self.genSet[index])
                 index = index + 1
             counter += 1
+
+        print("gen set: ")
+        for i in self.finalGenSet:
+            print(i)

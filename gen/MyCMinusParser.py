@@ -8,44 +8,44 @@ import sys
 def serializedATN():
     with StringIO() as buf:
         buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3%")
-        buf.write("s\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b")
+        buf.write("u\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b")
         buf.write("\t\b\3\2\3\2\3\3\3\3\3\3\7\3\26\n\3\f\3\16\3\31\13\3\3")
-        buf.write("\4\3\4\3\5\3\5\3\5\3\5\5\5!\n\5\3\5\3\5\3\5\3\5\3\5\3")
-        buf.write("\5\3\5\3\5\3\5\3\5\3\5\5\5.\n\5\3\6\3\6\3\6\3\6\3\6\3")
-        buf.write("\6\3\6\5\6\67\n\6\3\6\3\6\3\6\3\6\3\6\3\6\5\6?\n\6\3\7")
-        buf.write("\3\7\3\7\3\7\5\7E\n\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7")
-        buf.write("\3\7\3\7\3\7\3\7\3\7\3\7\5\7U\n\7\3\7\3\7\3\7\3\7\3\7")
-        buf.write("\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\7\7f\n\7\f\7")
-        buf.write("\16\7i\13\7\3\b\3\b\3\b\7\bn\n\b\f\b\16\bq\13\b\3\b\2")
-        buf.write("\3\f\t\2\4\6\b\n\f\16\2\b\3\2\35\"\3\2\24\25\3\2\30\33")
-        buf.write("\4\2\27\27\34\34\3\2\17\20\3\2\21\22\2\u0080\2\20\3\2")
-        buf.write("\2\2\4\27\3\2\2\2\6\32\3\2\2\2\b-\3\2\2\2\n>\3\2\2\2\f")
-        buf.write("T\3\2\2\2\16j\3\2\2\2\20\21\5\4\3\2\21\3\3\2\2\2\22\23")
-        buf.write("\5\b\5\2\23\24\7\r\2\2\24\26\3\2\2\2\25\22\3\2\2\2\26")
-        buf.write("\31\3\2\2\2\27\25\3\2\2\2\27\30\3\2\2\2\30\5\3\2\2\2\31")
-        buf.write("\27\3\2\2\2\32\33\t\2\2\2\33\7\3\2\2\2\34\35\5\6\4\2\35")
-        buf.write(" \7#\2\2\36\37\7\23\2\2\37!\5\f\7\2 \36\3\2\2\2 !\3\2")
-        buf.write("\2\2!.\3\2\2\2\"#\7#\2\2#$\7\23\2\2$.\5\f\7\2%&\7\6\2")
-        buf.write("\2&.\5\f\7\2\'.\5\n\6\2(.\5\f\7\2)*\7\t\2\2*+\5\4\3\2")
-        buf.write("+,\7\n\2\2,.\3\2\2\2-\34\3\2\2\2-\"\3\2\2\2-%\3\2\2\2")
-        buf.write("-\'\3\2\2\2-(\3\2\2\2-)\3\2\2\2.\t\3\2\2\2/\60\7\3\2\2")
-        buf.write("\60\61\7\7\2\2\61\62\5\f\7\2\62\63\7\b\2\2\63\66\5\b\5")
-        buf.write("\2\64\65\7\4\2\2\65\67\5\b\5\2\66\64\3\2\2\2\66\67\3\2")
-        buf.write("\2\2\67?\3\2\2\289\7\5\2\29:\7\7\2\2:;\5\f\7\2;<\7\b\2")
-        buf.write("\2<=\5\b\5\2=?\3\2\2\2>/\3\2\2\2>8\3\2\2\2?\13\3\2\2\2")
-        buf.write("@A\b\7\1\2AB\7#\2\2BD\7\7\2\2CE\5\16\b\2DC\3\2\2\2DE\3")
-        buf.write("\2\2\2EF\3\2\2\2FU\7\b\2\2GH\7#\2\2HI\7\13\2\2IJ\5\f\7")
-        buf.write("\2JK\7\f\2\2KU\3\2\2\2LM\7\26\2\2MU\5\f\7\13NU\7#\2\2")
-        buf.write("OU\7$\2\2PQ\7\7\2\2QR\5\f\7\2RS\7\b\2\2SU\3\2\2\2T@\3")
-        buf.write("\2\2\2TG\3\2\2\2TL\3\2\2\2TN\3\2\2\2TO\3\2\2\2TP\3\2\2")
-        buf.write("\2Ug\3\2\2\2VW\f\n\2\2WX\t\3\2\2Xf\5\f\7\13YZ\f\t\2\2")
-        buf.write("Z[\t\4\2\2[f\5\f\7\n\\]\f\b\2\2]^\t\5\2\2^f\5\f\7\t_`")
-        buf.write("\f\7\2\2`a\t\6\2\2af\5\f\7\bbc\f\6\2\2cd\t\7\2\2df\5\f")
-        buf.write("\7\7eV\3\2\2\2eY\3\2\2\2e\\\3\2\2\2e_\3\2\2\2eb\3\2\2")
-        buf.write("\2fi\3\2\2\2ge\3\2\2\2gh\3\2\2\2h\r\3\2\2\2ig\3\2\2\2")
-        buf.write("jo\5\f\7\2kl\7\16\2\2ln\5\f\7\2mk\3\2\2\2nq\3\2\2\2om")
-        buf.write("\3\2\2\2op\3\2\2\2p\17\3\2\2\2qo\3\2\2\2\f\27 -\66>DT")
-        buf.write("ego")
+        buf.write("\4\3\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5")
+        buf.write("\3\5\3\5\3\5\3\5\3\5\3\5\3\5\5\5\60\n\5\3\6\3\6\3\6\3")
+        buf.write("\6\3\6\3\6\3\6\5\69\n\6\3\6\3\6\3\6\3\6\3\6\3\6\5\6A\n")
+        buf.write("\6\3\7\3\7\3\7\3\7\5\7G\n\7\3\7\3\7\3\7\3\7\3\7\3\7\3")
+        buf.write("\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7W\n\7\3\7\3\7\3\7\3")
+        buf.write("\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\7\7h\n")
+        buf.write("\7\f\7\16\7k\13\7\3\b\3\b\3\b\7\bp\n\b\f\b\16\bs\13\b")
+        buf.write("\3\b\2\3\f\t\2\4\6\b\n\f\16\2\b\3\2\35\"\3\2\24\25\3\2")
+        buf.write("\30\33\4\2\27\27\34\34\3\2\17\20\3\2\21\22\2\u0082\2\20")
+        buf.write("\3\2\2\2\4\27\3\2\2\2\6\32\3\2\2\2\b/\3\2\2\2\n@\3\2\2")
+        buf.write("\2\fV\3\2\2\2\16l\3\2\2\2\20\21\5\4\3\2\21\3\3\2\2\2\22")
+        buf.write("\23\5\b\5\2\23\24\7\r\2\2\24\26\3\2\2\2\25\22\3\2\2\2")
+        buf.write("\26\31\3\2\2\2\27\25\3\2\2\2\27\30\3\2\2\2\30\5\3\2\2")
+        buf.write("\2\31\27\3\2\2\2\32\33\t\2\2\2\33\7\3\2\2\2\34\35\5\6")
+        buf.write("\4\2\35\36\7#\2\2\36\60\3\2\2\2\37 \5\6\4\2 !\7#\2\2!")
+        buf.write("\"\7\23\2\2\"#\5\f\7\2#\60\3\2\2\2$%\7#\2\2%&\7\23\2\2")
+        buf.write("&\60\5\f\7\2\'(\7\6\2\2(\60\5\f\7\2)\60\5\n\6\2*\60\5")
+        buf.write("\f\7\2+,\7\t\2\2,-\5\4\3\2-.\7\n\2\2.\60\3\2\2\2/\34\3")
+        buf.write("\2\2\2/\37\3\2\2\2/$\3\2\2\2/\'\3\2\2\2/)\3\2\2\2/*\3")
+        buf.write("\2\2\2/+\3\2\2\2\60\t\3\2\2\2\61\62\7\3\2\2\62\63\7\7")
+        buf.write("\2\2\63\64\5\f\7\2\64\65\7\b\2\2\658\5\b\5\2\66\67\7\4")
+        buf.write("\2\2\679\5\b\5\28\66\3\2\2\289\3\2\2\29A\3\2\2\2:;\7\5")
+        buf.write("\2\2;<\7\7\2\2<=\5\f\7\2=>\7\b\2\2>?\5\b\5\2?A\3\2\2\2")
+        buf.write("@\61\3\2\2\2@:\3\2\2\2A\13\3\2\2\2BC\b\7\1\2CD\7#\2\2")
+        buf.write("DF\7\7\2\2EG\5\16\b\2FE\3\2\2\2FG\3\2\2\2GH\3\2\2\2HW")
+        buf.write("\7\b\2\2IJ\7#\2\2JK\7\13\2\2KL\5\f\7\2LM\7\f\2\2MW\3\2")
+        buf.write("\2\2NO\7\26\2\2OW\5\f\7\13PW\7#\2\2QW\7$\2\2RS\7\7\2\2")
+        buf.write("ST\5\f\7\2TU\7\b\2\2UW\3\2\2\2VB\3\2\2\2VI\3\2\2\2VN\3")
+        buf.write("\2\2\2VP\3\2\2\2VQ\3\2\2\2VR\3\2\2\2Wi\3\2\2\2XY\f\n\2")
+        buf.write("\2YZ\t\3\2\2Zh\5\f\7\13[\\\f\t\2\2\\]\t\4\2\2]h\5\f\7")
+        buf.write("\n^_\f\b\2\2_`\t\5\2\2`h\5\f\7\tab\f\7\2\2bc\t\6\2\2c")
+        buf.write("h\5\f\7\bde\f\6\2\2ef\t\7\2\2fh\5\f\7\7gX\3\2\2\2g[\3")
+        buf.write("\2\2\2g^\3\2\2\2ga\3\2\2\2gd\3\2\2\2hk\3\2\2\2ig\3\2\2")
+        buf.write("\2ij\3\2\2\2j\r\3\2\2\2ki\3\2\2\2lq\5\f\7\2mn\7\16\2\2")
+        buf.write("np\5\f\7\2om\3\2\2\2ps\3\2\2\2qo\3\2\2\2qr\3\2\2\2r\17")
+        buf.write("\3\2\2\2sq\3\2\2\2\13\27/8@FVgiq")
         return buf.getvalue()
 
 
@@ -348,6 +348,33 @@ class MyCMinusParser ( Parser ):
                 return visitor.visitChildren(self)
 
 
+    class VarSingleDeclContext(StatementContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.StatementContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def varType(self):
+            return self.getTypedRuleContext(MyCMinusParser.VarTypeContext,0)
+
+        def ID(self):
+            return self.getToken(MyCMinusParser.ID, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterVarSingleDecl" ):
+                listener.enterVarSingleDecl(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitVarSingleDecl" ):
+                listener.exitVarSingleDecl(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitVarSingleDecl" ):
+                return visitor.visitVarSingleDecl(self)
+            else:
+                return visitor.visitChildren(self)
+
+
     class VarDeclStatContext(StatementContext):
 
         def __init__(self, parser, ctx:ParserRuleContext): # actually a MyCMinusParser.StatementContext
@@ -495,72 +522,74 @@ class MyCMinusParser ( Parser ):
 
         localctx = MyCMinusParser.StatementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 6, self.RULE_statement)
-        self._la = 0 # Token type
         try:
-            self.state = 43
+            self.state = 45
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,2,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,1,self._ctx)
             if la_ == 1:
-                localctx = MyCMinusParser.VarDeclStatContext(self, localctx)
+                localctx = MyCMinusParser.VarSingleDeclContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 26
                 self.varType()
                 self.state = 27
                 self.match(MyCMinusParser.ID)
-                self.state = 30
-                self._errHandler.sync(self)
-                _la = self._input.LA(1)
-                if _la==MyCMinusParser.EQUALS:
-                    self.state = 28
-                    self.match(MyCMinusParser.EQUALS)
-                    self.state = 29
-                    self.expression(0)
-
-
                 pass
 
             elif la_ == 2:
-                localctx = MyCMinusParser.AssignmentContext(self, localctx)
+                localctx = MyCMinusParser.VarDeclStatContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 32
+                self.state = 29
+                self.varType()
+                self.state = 30
                 self.match(MyCMinusParser.ID)
-                self.state = 33
+                self.state = 31
                 self.match(MyCMinusParser.EQUALS)
-                self.state = 34
+                self.state = 32
                 self.expression(0)
                 pass
 
             elif la_ == 3:
-                localctx = MyCMinusParser.PrintStatContext(self, localctx)
+                localctx = MyCMinusParser.AssignmentContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
+                self.state = 34
+                self.match(MyCMinusParser.ID)
                 self.state = 35
-                self.match(MyCMinusParser.PRINT)
+                self.match(MyCMinusParser.EQUALS)
                 self.state = 36
                 self.expression(0)
                 pass
 
             elif la_ == 4:
-                localctx = MyCMinusParser.ConditionalStatContext(self, localctx)
+                localctx = MyCMinusParser.PrintStatContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
                 self.state = 37
-                self.conditionalStatement()
-                pass
-
-            elif la_ == 5:
-                localctx = MyCMinusParser.ExpStatContext(self, localctx)
-                self.enterOuterAlt(localctx, 5)
+                self.match(MyCMinusParser.PRINT)
                 self.state = 38
                 self.expression(0)
                 pass
 
-            elif la_ == 6:
-                localctx = MyCMinusParser.BlockContext(self, localctx)
-                self.enterOuterAlt(localctx, 6)
+            elif la_ == 5:
+                localctx = MyCMinusParser.ConditionalStatContext(self, localctx)
+                self.enterOuterAlt(localctx, 5)
                 self.state = 39
-                self.match(MyCMinusParser.LCURL)
+                self.conditionalStatement()
+                pass
+
+            elif la_ == 6:
+                localctx = MyCMinusParser.ExpStatContext(self, localctx)
+                self.enterOuterAlt(localctx, 6)
                 self.state = 40
-                self.statementList()
+                self.expression(0)
+                pass
+
+            elif la_ == 7:
+                localctx = MyCMinusParser.BlockContext(self, localctx)
+                self.enterOuterAlt(localctx, 7)
                 self.state = 41
+                self.match(MyCMinusParser.LCURL)
+                self.state = 42
+                self.statementList()
+                self.state = 43
                 self.match(MyCMinusParser.RCURL)
                 pass
 
@@ -668,29 +697,29 @@ class MyCMinusParser ( Parser ):
         localctx = MyCMinusParser.ConditionalStatementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 8, self.RULE_conditionalStatement)
         try:
-            self.state = 60
+            self.state = 62
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [MyCMinusParser.IF]:
                 localctx = MyCMinusParser.IfStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 45
-                self.match(MyCMinusParser.IF)
-                self.state = 46
-                self.match(MyCMinusParser.LPAR)
                 self.state = 47
-                self.expression(0)
+                self.match(MyCMinusParser.IF)
                 self.state = 48
-                self.match(MyCMinusParser.RPAR)
+                self.match(MyCMinusParser.LPAR)
                 self.state = 49
+                self.expression(0)
+                self.state = 50
+                self.match(MyCMinusParser.RPAR)
+                self.state = 51
                 self.statement()
-                self.state = 52
+                self.state = 54
                 self._errHandler.sync(self)
-                la_ = self._interp.adaptivePredict(self._input,3,self._ctx)
+                la_ = self._interp.adaptivePredict(self._input,2,self._ctx)
                 if la_ == 1:
-                    self.state = 50
+                    self.state = 52
                     self.match(MyCMinusParser.ELSE)
-                    self.state = 51
+                    self.state = 53
                     self.statement()
 
 
@@ -698,15 +727,15 @@ class MyCMinusParser ( Parser ):
             elif token in [MyCMinusParser.WHILE]:
                 localctx = MyCMinusParser.WhileStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 54
-                self.match(MyCMinusParser.WHILE)
-                self.state = 55
-                self.match(MyCMinusParser.LPAR)
                 self.state = 56
-                self.expression(0)
+                self.match(MyCMinusParser.WHILE)
                 self.state = 57
-                self.match(MyCMinusParser.RPAR)
+                self.match(MyCMinusParser.LPAR)
                 self.state = 58
+                self.expression(0)
+                self.state = 59
+                self.match(MyCMinusParser.RPAR)
+                self.state = 60
                 self.statement()
                 pass
             else:
@@ -1076,27 +1105,27 @@ class MyCMinusParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 82
+            self.state = 84
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,6,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,5,self._ctx)
             if la_ == 1:
                 localctx = MyCMinusParser.FuncCallContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
 
-                self.state = 63
+                self.state = 65
                 self.match(MyCMinusParser.ID)
-                self.state = 64
-                self.match(MyCMinusParser.LPAR)
                 self.state = 66
+                self.match(MyCMinusParser.LPAR)
+                self.state = 68
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << MyCMinusParser.LPAR) | (1 << MyCMinusParser.NOT) | (1 << MyCMinusParser.ID) | (1 << MyCMinusParser.NUMBER))) != 0):
-                    self.state = 65
+                    self.state = 67
                     self.exprList()
 
 
-                self.state = 68
+                self.state = 70
                 self.match(MyCMinusParser.RPAR)
                 pass
 
@@ -1104,13 +1133,13 @@ class MyCMinusParser ( Parser ):
                 localctx = MyCMinusParser.ArrayCallContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 69
-                self.match(MyCMinusParser.ID)
-                self.state = 70
-                self.match(MyCMinusParser.LBRAC)
                 self.state = 71
-                self.expression(0)
+                self.match(MyCMinusParser.ID)
                 self.state = 72
+                self.match(MyCMinusParser.LBRAC)
+                self.state = 73
+                self.expression(0)
+                self.state = 74
                 self.match(MyCMinusParser.RBRAC)
                 pass
 
@@ -1118,9 +1147,9 @@ class MyCMinusParser ( Parser ):
                 localctx = MyCMinusParser.UnaryExpContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 74
+                self.state = 76
                 self.match(MyCMinusParser.NOT)
-                self.state = 75
+                self.state = 77
                 self.expression(9)
                 pass
 
@@ -1128,7 +1157,7 @@ class MyCMinusParser ( Parser ):
                 localctx = MyCMinusParser.IdCallContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 76
+                self.state = 78
                 self.match(MyCMinusParser.ID)
                 pass
 
@@ -1136,7 +1165,7 @@ class MyCMinusParser ( Parser ):
                 localctx = MyCMinusParser.PrimNumContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 77
+                self.state = 79
                 self.match(MyCMinusParser.NUMBER)
                 pass
 
@@ -1144,121 +1173,121 @@ class MyCMinusParser ( Parser ):
                 localctx = MyCMinusParser.ParExpContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 78
-                self.match(MyCMinusParser.LPAR)
-                self.state = 79
-                self.expression(0)
                 self.state = 80
+                self.match(MyCMinusParser.LPAR)
+                self.state = 81
+                self.expression(0)
+                self.state = 82
                 self.match(MyCMinusParser.RPAR)
                 pass
 
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 101
+            self.state = 103
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,8,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,7,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    self.state = 99
+                    self.state = 101
                     self._errHandler.sync(self)
-                    la_ = self._interp.adaptivePredict(self._input,7,self._ctx)
+                    la_ = self._interp.adaptivePredict(self._input,6,self._ctx)
                     if la_ == 1:
                         localctx = MyCMinusParser.LogicalExpContext(self, MyCMinusParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
-                        self.state = 84
+                        self.state = 86
                         if not self.precpred(self._ctx, 8):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 8)")
-                        self.state = 85
+                        self.state = 87
                         _la = self._input.LA(1)
                         if not(_la==MyCMinusParser.AND or _la==MyCMinusParser.OR):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 86
+                        self.state = 88
                         self.expression(9)
                         pass
 
                     elif la_ == 2:
                         localctx = MyCMinusParser.RelationExpContext(self, MyCMinusParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
-                        self.state = 87
+                        self.state = 89
                         if not self.precpred(self._ctx, 7):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 7)")
-                        self.state = 88
+                        self.state = 90
                         _la = self._input.LA(1)
                         if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << MyCMinusParser.GTHAN) | (1 << MyCMinusParser.GEQUAL) | (1 << MyCMinusParser.LTHAN) | (1 << MyCMinusParser.LEQUAL))) != 0)):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 89
+                        self.state = 91
                         self.expression(8)
                         pass
 
                     elif la_ == 3:
                         localctx = MyCMinusParser.EqualityExpContext(self, MyCMinusParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
-                        self.state = 90
+                        self.state = 92
                         if not self.precpred(self._ctx, 6):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 6)")
-                        self.state = 91
+                        self.state = 93
                         _la = self._input.LA(1)
                         if not(_la==MyCMinusParser.EQUALTO or _la==MyCMinusParser.NOTEQ):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 92
+                        self.state = 94
                         self.expression(7)
                         pass
 
                     elif la_ == 4:
                         localctx = MyCMinusParser.ArithmeticExpContext(self, MyCMinusParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
-                        self.state = 93
+                        self.state = 95
                         if not self.precpred(self._ctx, 5):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 5)")
-                        self.state = 94
+                        self.state = 96
                         _la = self._input.LA(1)
                         if not(_la==MyCMinusParser.PLUS or _la==MyCMinusParser.MINUS):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 95
+                        self.state = 97
                         self.expression(6)
                         pass
 
                     elif la_ == 5:
                         localctx = MyCMinusParser.MultExpContext(self, MyCMinusParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
-                        self.state = 96
+                        self.state = 98
                         if not self.precpred(self._ctx, 4):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 4)")
-                        self.state = 97
+                        self.state = 99
                         _la = self._input.LA(1)
                         if not(_la==MyCMinusParser.TIMES or _la==MyCMinusParser.DIVIDE):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 98
+                        self.state = 100
                         self.expression(5)
                         pass
 
              
-                self.state = 103
+                self.state = 105
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,8,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,7,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -1326,17 +1355,17 @@ class MyCMinusParser ( Parser ):
         try:
             localctx = MyCMinusParser.ExpressionListContext(self, localctx)
             self.enterOuterAlt(localctx, 1)
-            self.state = 104
+            self.state = 106
             self.expression(0)
-            self.state = 109
+            self.state = 111
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==MyCMinusParser.COMMA:
-                self.state = 105
+                self.state = 107
                 self.match(MyCMinusParser.COMMA)
-                self.state = 106
+                self.state = 108
                 self.expression(0)
-                self.state = 111
+                self.state = 113
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 

@@ -13,7 +13,8 @@ statementList:
 varType: INT | FLOAT | VOID | BOOL | STRING | CHAR ;
 
 statement:
-	varType ID (EQUALS expression)?	# varDeclStat
+    varType ID #varSingleDecl
+	| varType ID EQUALS expression	# varDeclStat
 	| ID EQUALS expression			# assignment
 	| PRINT expression				# printStat
 	| conditionalStatement          # conditionalStat

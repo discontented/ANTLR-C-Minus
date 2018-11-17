@@ -6,6 +6,7 @@ from genSet import GenListener, KillListener
 from Analyzer import Analyzer
 from gen.MyCMinusLexer import MyCMinusLexer
 from gen.MyCMinusParser import MyCMinusParser
+from gen.MyCMinusVisitor import MyCMinusVisitor
 
 
 def main(argv):
@@ -21,18 +22,30 @@ def main(argv):
     print("--Control Flow Graph--")
     listener = Listener()
     walker.walk(listener, tree)
-    analyzer = Analyzer(listener.label)
-    # graphListener = GraphListener()
+
     genListener = GenListener()
     killListener = KillListener()
 
     walker.walk(genListener, tree)
     walker.walk(killListener, tree)
-    genListener.printGenSet()
-    killListener.printKillSet()
+
+    print("--Gen/Kill Set--")
+    genListener.printGenSet(listener.label)
+    killListener.printKillSet(listener.label)
+
+    # Analysis
+    analyzer = Analyzer(listener.label, killListener.finalKillSet, genListener.finalGenSet)
+    walker.walk(analyzer, tree)
+
+    print("--Analyzer--")
+
+    analyzer.LVentry()
     # walker.walk(graphListener, tree)
     # graphListener.printNodes()
+    analyzer.LVexit()
 
+    print("---------Graph-----------")
+    analyzer.print_cfg()
 
 
 #if __name__ == '__main__':

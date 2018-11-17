@@ -24,6 +24,11 @@ class MyCMinusVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by MyCMinusParser#varSingleDecl.
+    def visitVarSingleDecl(self, ctx:MyCMinusParser.VarSingleDeclContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by MyCMinusParser#varDeclStat.
     def visitVarDeclStat(self, ctx:MyCMinusParser.VarDeclStatContext):
         return self.visitChildren(ctx)
