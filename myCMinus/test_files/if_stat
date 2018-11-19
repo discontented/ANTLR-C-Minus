@@ -1,0 +1,11 @@
+int x = 2;
+int y = 4;
+int x;
+x = 1;
+if (y > x) {
+    z = y;
+    y = 1;
+} else {
+    z = y * y;
+};
+x = z;
