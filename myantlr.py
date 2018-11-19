@@ -1,7 +1,8 @@
 from antlr4 import *
 
+import sys
+
 from Listener import Listener
-from GraphListener import GraphListener
 from genSet import GenListener, KillListener
 from Analyzer import Analyzer
 from gen.MyCMinusLexer import MyCMinusLexer
@@ -10,7 +11,7 @@ from gen.MyCMinusVisitor import MyCMinusVisitor
 
 
 def main(argv):
-    # input = InputStream(argv)
+    # input = InputStream(sys.argv[1])
     input = FileStream(argv)
     lexer = MyCMinusLexer(input)
     stream = CommonTokenStream(lexer)
@@ -19,7 +20,7 @@ def main(argv):
 
     walker = ParseTreeWalker()
     # print(Trees.toStringTree(tree, None, parser))
-    print("--Control Flow Graph--")
+    print("--Elementary Blocks--")
     listener = Listener()
     walker.walk(listener, tree)
 
@@ -48,7 +49,5 @@ def main(argv):
     analyzer.print_cfg()
 
 
-#if __name__ == '__main__':
-#    main(sys.argv)
-
-main("input.txt")
+if __name__ == '__main__':
+   main(str(sys.argv[1]))

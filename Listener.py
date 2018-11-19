@@ -34,7 +34,3 @@ class Listener(MyCMinusListener):
     def enterAssignment(self, ctx:MyCMinusParser.AssignmentContext):
         self.labeller(ctx)
         print("%s /* block %d" % (ctx.getText(), self.label))
-
-
-
-
