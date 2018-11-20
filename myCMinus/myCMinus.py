@@ -45,7 +45,7 @@ def main(argv):
     # graphListener.printNodes()
     analyzer.LVexit()
 
-    print("---------Graph-----------")
+    print("--Control Flow Graph--")
     analyzer.print_cfg()
 
 
