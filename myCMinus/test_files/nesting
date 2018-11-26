@@ -1,0 +1,11 @@
+int x = 0;
+int y = 0;
+
+while( x < 10 ) {
+    if(y != x) {
+        y = x + 1;
+    } else {
+        y = y - 1;
+    };
+    x = x + 1;
+};

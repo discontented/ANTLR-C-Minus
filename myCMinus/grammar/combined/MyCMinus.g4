@@ -4,36 +4,49 @@ grammar MyCMinus;
  Parser Rules
  */
 
-program: statementList # mainProg;
+program: statementList ;
 
 statementList:
-	(statement SEMI)+						# stat;
+	statementList SEMI statement
+	| statement
+	;
 
-type_ID: INT | FLOAT | VOID | BOOL | STRING | CHAR # IDtype;
+// varDecl: vartype ID (EQUALS expression)? SEMI # varDeclaration;
+
+varType: INT | FLOAT | VOID | BOOL | STRING | CHAR # IDtype;
 
 statement:
-	type_ID ID (EQUALS expression)?	# varDeclStat
-	| PRINT expression				# printStat
-	| ID EQUALS expression			# assignment
-	| IF LPAR expression RPAR LCURL statementList RCURL (ELSE LCURL statementList RCURL)? # ifelseStat
-	| expression	# expStat
-	|				# emptyStat;
+	assignStatement
+	| PRINT expression
+	| expression
+	| conditionalStat
+	| LCURL statementList RCURL
+	|
+	;
+
+assignStatement: varType ID EQUALS expression;
+
+conditionalStat:
+	ifStatement
+	| whileStatement
+	;
+
+ifStatement:
+	IF LPAR expression RPAR statement (ELSE statement)?  ;
+
+whileStatement: WHILE LPAR expression RPAR statementList ;
 
 expression:
-	ID LPAR exprList? RPAR										# funcCall
-	| ID LBRAC expression RBRAC									# arrayCall
+	ID LBRAC expression RBRAC									# arrayCall
 	| NOT expression											# unaryExp
 	| expression (OR | AND) expression							# logicalExp
 	| expression (LTHAN | GTHAN | LEQUAL | GEQUAL) expression	# relationExp
 	| expression (EQUALTO | NOTEQ) expression					# equalityExp
 	| expression (PLUS | MINUS) expression						# arithmeticExp
 	| expression (TIMES | DIVIDE) expression					# multExp
-	| ID														# IDcall
+	| ID														# idCall
 	| NUMBER													# primNum
 	| LPAR expression RPAR										# parExp;
-
-exprList: expression (COMMA expression)* # expressionList;
-
 /*
  lexer rules
  */
@@ -79,7 +92,9 @@ STRING: 'string';
 CHAR: 'char';
 BOOL: 'bool';
 
+RETURN: 'return';
+
 ID: LETTER (DIGIT | LETTER)*;
 NUMBER: DIGIT+ ('.' DIGIT+)?;
 
-WS: [ \n\t]+ -> skip;
+WS: [ \r\n\t]+ -> skip;
