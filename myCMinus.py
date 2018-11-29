@@ -49,5 +49,7 @@ def main(argv):
     analyzer.print_cfg()
 
 
-if __name__ == '__main__':
-   main(str(sys.argv[1]))
+# if __name__ == '__main__':
+#    main(str(sys.argv[1]))
+
+main("test_files/while_loop")

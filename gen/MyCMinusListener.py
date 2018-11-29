@@ -1,4 +1,4 @@
-# Generated from C:/Users/jcorn/PycharmProjects/python-p4/grammar/ebnf\MyCMinus.g4 by ANTLR 4.7
+# Generated from /home/josh/PycharmProjects/python-p4/grammar/ebnf/MyCMinus.g4 by ANTLR 4.7
 from antlr4 import *
 if __name__ is not None and "." in __name__:
     from .MyCMinusParser import MyCMinusParser

@@ -20,6 +20,7 @@ class Analyzer(MyCMinusListener):
         # print(statList.statement())
         # print(len(statList.statement()))
 
+        label_index = ctx.__getattribute__("label") - 1
 
         # print(i)
         if(isinstance(ctx.conditionalStatement(), MyCMinusParser.IfStatementContext)):
@@ -27,19 +28,24 @@ class Analyzer(MyCMinusListener):
                 "label")
             secondStatementLabel = ctx.children[0].statement()[1].statementList().statement()[0].__getattribute__(
                 "label")
-            label_index = ctx.__getattribute__("label") - 1
             self.lv_exit_list[label_index] = ((ctx.__getattribute__("label"), firstStatementLabel, secondStatementLabel))
         elif(isinstance(ctx.conditionalStatement(), MyCMinusParser.WhileStatementContext)):
             firstStatementLabel = ctx.children[0].statement().statementList().statement()[0].__getattribute__("label")
             nextIndex = statList.statement().index(ctx) + 1
             if(nextIndex < len(statList.statement())):
+                # if a statement exists after the while block
                 nextLabel = statList.statement()[nextIndex].__getattribute__("label")
-                self.lv_exit_list.append((ctx.__getattribute__("label"), nextLabel))
+                # self.lv_exit_list.append((ctx.__getattribute__("label"), nextLabel))
+                self.lv_exit_list[label_index] = ((ctx.__getattribute__("label"), firstStatementLabel, nextLabel))
+                # Get very last statement of while block and changes its control flow to the while loop condition.
+                lastStatementLabel = ctx.children[0].statement().statementList().statement()[-1].__getattribute__("label")
+                self.lv_exit_list[lastStatementLabel - 1] = (lastStatementLabel, label_index + 1)
 
 
-    def enterWhileStatement(self, ctx:MyCMinusParser.WhileStatementContext):
-        test = ctx.expression()
-        stat = ctx.statement()
+    # def enterWhileStatement(self, ctx:MyCMinusParser.WhileStatementContext):
+    #     lastStatementLabel = ctx.statement().statementList().statement()[-1].__getattribute__("label")
+    #     conditionLabel = ctx.parentCtx.__getattribute__("label")
+    #     self.lv_exit_list[lastStatementLabel] = (lastStatementLabel, conditionLabel)
 
 
     def isValidType(self, ctx):
