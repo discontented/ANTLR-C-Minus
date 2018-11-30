@@ -5,6 +5,7 @@ from Listener import Listener
 
 class Analyzer(MyCMinusListener):
     lv_exit_list = list() # (label, [followingLabel1, fLabel2, ...])
+    lv_entry_list = list()
 
     def __init__(self, numLabels, killSet, genSet):
         self.labels = numLabels
@@ -23,12 +24,26 @@ class Analyzer(MyCMinusListener):
         label_index = ctx.__getattribute__("label") - 1
 
         # print(i)
-        if(isinstance(ctx.conditionalStatement(), MyCMinusParser.IfStatementContext)):
+        if isinstance(ctx.conditionalStatement(), MyCMinusParser.IfStatementContext):
             firstStatementLabel = ctx.children[0].statement()[0].statementList().statement()[0].__getattribute__(
                 "label")
             secondStatementLabel = ctx.children[0].statement()[1].statementList().statement()[0].__getattribute__(
                 "label")
+            # Last statement within if block
+            last_if_label = ctx.children[0].statement()[0].statementList().statement()[-1].__getattribute__("label")
+
             self.lv_exit_list[label_index] = ((ctx.__getattribute__("label"), firstStatementLabel, secondStatementLabel))
+
+            if ([last_if_label, secondStatementLabel] in self.lv_exit_list):
+                self.lv_exit_list.pop(self.lv_exit_list.index([last_if_label, secondStatementLabel]))
+
+
+
+            # Gets statement following if/else
+            follow_stat_label = statList.statement()[statList.statement().index(ctx) + 1].__getattribute__("label")
+            self.lv_exit_list.insert(last_if_label - 1, (last_if_label, follow_stat_label))
+            # self.lv_exit_list[last_if_label] = (last_if_label, follow_stat_label)
+
         elif(isinstance(ctx.conditionalStatement(), MyCMinusParser.WhileStatementContext)):
             firstStatementLabel = ctx.children[0].statement().statementList().statement()[0].__getattribute__("label")
             nextIndex = statList.statement().index(ctx) + 1
@@ -95,6 +110,17 @@ class Analyzer(MyCMinusListener):
                     print([node[0], node[i]])
             else:
                 print(node)
+
+    def return_cfg(self):
+        cfg = list()
+        for node in self.lv_exit_list:
+            if isinstance(node, tuple):
+                tup_len = len(node)
+                for i in range(1, tup_len):
+                    cfg.append([node[0], node[i]])
+            else:
+                cfg.append(node)
+        return cfg
 
 
 

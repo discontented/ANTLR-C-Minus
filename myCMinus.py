@@ -5,6 +5,7 @@ import sys
 from Listener import Listener
 from genSet import GenListener, KillListener
 from Analyzer import Analyzer
+from Worklist import Worklist
 from gen.MyCMinusLexer import MyCMinusLexer
 from gen.MyCMinusParser import MyCMinusParser
 from gen.MyCMinusVisitor import MyCMinusVisitor
@@ -48,8 +49,12 @@ def main(argv):
     print("--Control Flow Graph--")
     analyzer.print_cfg()
 
+    wl = Worklist(analyzer.return_cfg(), analyzer.lv_entry_list)
+
+    wl.inner_transfer(set('z'), 5)
+
 
 # if __name__ == '__main__':
 #    main(str(sys.argv[1]))
 
-main("test_files/while_loop")
+main("test_files/worklist")
