@@ -22,4 +22,14 @@ The control flow graph is represented by a set of edges.
 
 All five tests with screenshots are located in the test_files folder. Each of these files represent different functions in our myCminus language.
 
+--Worklist Implementation--
 
+Worklist algorithm implementation is located within Worklist.py.
+
+The algorithm walks through the worklist list of edges, output the transfer function and result with each iteration.  The result of the transfer function is checked to see if it is a subset of the predecessor label's analysis result.
+
+The very last output is the contents of the analysis list.
+
+To run the algorithm on a custom test file, run `python3 myCMinus.py inputFile`  The worklist algorithm analysis will be the last section of the output.
+
+Check test_files/output for the Worklist Algorithm output of the test files.

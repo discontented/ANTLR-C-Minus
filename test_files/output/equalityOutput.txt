@@ -1,0 +1,72 @@
+/** Program
+
+int x = 0;
+int y = 0;
+
+if(x == y) {
+    x = 1;
+} else {
+    y = 1;
+};
+
+y = y + 1;
+
+*/
+
+--- Beginning Worklist Algorithm ---
+Generate worklist algorithm for Live Variable Analysis
+NOTE: The output 'set()' represents an empty set
+
+W = {}
+
+---Populate Worklist---
+
+W = A:(6, 5)B:(6, 4)C:(5, 3)D:(4, 3)E:(3, 2)F:(2, 1)
+
+---Populate Analysis Set---
+[set(), set(), set(), set(), set(), set()]
+---End Analysis Population---
+
+-----Iteration 1------
+L = 6, L' = 5 W = B:(6, 4)C:(5, 3)D:(4, 3)E:(3, 2)F:(2, 1)
+f_6(Analysis[6]) = set() - {'y'} U {'y'} = {'y'}
+
+Analysis[5]: set()
+{'y'} is NOT a subset of set()
+
+-----Iteration 2------
+L = 6, L' = 4 W = C:(5, 3)D:(4, 3)E:(3, 2)F:(2, 1)
+f_6(Analysis[6]) = set() - {'y'} U {'y'} = {'y'}
+
+Analysis[4]: set()
+{'y'} is NOT a subset of set()
+
+-----Iteration 3------
+L = 5, L' = 3 W = D:(4, 3)E:(3, 2)F:(2, 1)
+f_5(Analysis[5]) = {'y'} - {'y'} U set() = set()
+
+Analysis[3]: set()
+set() is a subset of set()
+
+-----Iteration 4------
+L = 4, L' = 3 W = E:(3, 2)F:(2, 1)
+f_4(Analysis[4]) = {'y'} - {'x'} U set() = {'y'}
+
+Analysis[3]: set()
+{'y'} is NOT a subset of set()
+
+-----Iteration 5------
+L = 3, L' = 2 W = F:(2, 1)
+f_3(Analysis[3]) = {'y'} - set() U {'y', 'x'} = {'y', 'x'}
+
+Analysis[2]: set()
+{'y', 'x'} is NOT a subset of set()
+
+-----Iteration 6------
+L = 2, L' = 1 W =
+f_2(Analysis[2]) = {'y', 'x'} - {'y'} U set() = {'x'}
+
+Analysis[1]: set()
+{'x'} is NOT a subset of set()
+
+[{'x'}, {'y', 'x'}, {'y'}, {'y'}, {'y'}, set()]

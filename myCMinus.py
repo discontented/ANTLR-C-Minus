@@ -51,10 +51,8 @@ def main(argv):
 
     wl = Worklist(analyzer.return_cfg(), analyzer.lv_entry_list)
 
-    wl.inner_transfer(set('z'), 5)
+    wl.iterate()
+    print(wl.analysis)
 
-
-# if __name__ == '__main__':
-#    main(str(sys.argv[1]))
-
-main("test_files/worklist")
+if __name__ == '__main__':
+   main(str(sys.argv[1]))
